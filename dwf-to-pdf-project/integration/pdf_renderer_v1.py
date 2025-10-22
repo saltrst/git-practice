@@ -804,6 +804,9 @@ class PDFRenderer:
 
     def finish(self):
         """Finalize the PDF and write to disk."""
+        # CRITICAL: Must call showPage() before save() to finalize the current page
+        # Without this, PDF will have 0 pages even if geometry was rendered!
+        self.canvas.showPage()
         self.canvas.save()
 
         print(f"\nPDF Rendering Complete:")

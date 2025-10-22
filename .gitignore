@@ -44,6 +44,7 @@ test_output*.pdf
 test_*.pdf
 *_from_xps.pdf
 *_unified*.pdf
+*_FIXED*.pdf
 _temp_*/
 _temp_*
 test_pdf_gen.py
