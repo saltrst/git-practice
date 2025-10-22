@@ -28,7 +28,7 @@ project_root = Path(__file__).parent / "dwf-to-pdf-project"
 sys.path.insert(0, str(project_root))
 
 from integration.dwf_parser_v1 import parse_dwf_file
-from integration.xps_parser import parse_xps_dwfx, is_xps_dwfx
+from integration.xps_to_pdf_direct import convert_xps_dwfx_to_pdf_direct
 from integration.pdf_renderer_v1 import render_dwf_to_pdf
 
 
@@ -121,40 +121,34 @@ The converter automatically detects the format and uses the appropriate parser.
             print()
 
         # Parse DWF/DWFX file
-        # Try W2D parser first, fall back to XPS parser if needed
-        parser_used = "W2D"
-        opcodes = None
-
+        # Try W2D parser first, use direct XPS renderer if W2D fails
         try:
             if args.verbose:
                 print("🔍 Parsing DWF/DWFX file (trying W2D parser)...")
 
             opcodes = parse_dwf_file(str(input_path))
+            parser_used = "W2D"
 
         except NotImplementedError as e:
-            # W2D parser failed, try XPS parser
+            # W2D parser failed, use direct XPS renderer
             if "XPS-only" in str(e) or "XPS-based" in str(e):
                 if args.verbose:
                     print("   W2D parser: File is XPS-only")
-                    print("   Trying XPS parser...")
+                    print("   Using direct XPS renderer...")
 
-                try:
-                    opcodes = parse_xps_dwfx(str(input_path))
-                    parser_used = "XPS"
-                except Exception as xps_error:
-                    print(f"❌ Error: Both parsers failed", file=sys.stderr)
-                    print(f"   W2D: {e}", file=sys.stderr)
-                    print(f"   XPS: {xps_error}", file=sys.stderr)
-                    return 1
+                # Direct XPS to PDF (no opcode translation)
+                success = convert_xps_dwfx_to_pdf_direct(
+                    str(input_path),
+                    str(output_path),
+                    verbose=args.verbose
+                )
+                return 0 if success else 1
             else:
                 raise
 
-        if opcodes is None:
-            print(f"❌ Error: Failed to parse {input_path}", file=sys.stderr)
-            return 1
-
+        # W2D path: Process opcodes and render to PDF
         if args.verbose:
-            print(f"✓ Parsed {len(opcodes)} opcodes using {parser_used} parser")
+            print(f"✓ Parsed {len(opcodes)} opcodes using W2D parser")
 
             # Show opcode distribution
             from collections import Counter
@@ -177,7 +171,7 @@ The converter automatically detects the format and uses the appropriate parser.
 
         # Calculate auto page size if needed
         if args.page_size == 'auto':
-            # Calculate bounding box from opcodes
+            # Calculate bounding box from W2D opcodes
             all_coords = []
             for op in opcodes:
                 if 'vertices' in op:

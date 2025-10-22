@@ -84,7 +84,8 @@ def parse_xps_path_data(path_data: str, scale: float = 1.0) -> List[Tuple[float,
         return []
 
     # Extract all numeric values (including negative and decimals)
-    coords = re.findall(r'-?\d+\.?\d*', path_data)
+    # Pattern explanation: optional minus, digits, optional (decimal point + more digits)
+    coords = re.findall(r'-?\d+(?:\.\d+)?', path_data)
 
     # Convert to floats and apply scale
     points = []
@@ -315,22 +316,26 @@ def parse_xps_dwfx(file_path: str) -> List[Dict]:
             # Parse XPS page
             page_data = parse_xps_page(str(fpage_file))
 
-            # Calculate scale factor based on page dimensions
-            # XPS uses much larger coordinate space than PDF
-            page_width = page_data['width']
-            page_height = page_data['height']
+            # XPS uses 96 DPI, PDF uses 72 DPI
+            # Convert: PDF points = XPS units × (72/96) = XPS units × 0.75
+            # This preserves original dimensions in inches
+            scale = 72.0 / 96.0  # 0.75
 
-            # Target PDF page size (letter: 612x792 points)
-            target_width = 612
-            target_height = 792
+            # Calculate PDF page size (convert XPS units to PDF points)
+            pdf_width = page_data['width'] * scale
+            pdf_height = page_data['height'] * scale
 
-            # Calculate scale to fit
-            scale_x = target_width / page_width if page_width > 0 else 0.1
-            scale_y = target_height / page_height if page_height > 0 else 0.1
-            scale = min(scale_x, scale_y)
+            # Add page info opcode at start of each page
+            # This tells the renderer what page size to use
+            page_info = {
+                'type': 'xps_page_info',
+                'width': pdf_width,
+                'height': pdf_height,
+                'page_index': page_idx
+            }
 
             # Convert to opcodes
-            page_opcodes = xps_to_w2d_opcodes(page_data, scale=scale)
+            page_opcodes = [page_info] + xps_to_w2d_opcodes(page_data, scale=scale)
 
             # Add page break marker if not first page
             if page_idx > 0:

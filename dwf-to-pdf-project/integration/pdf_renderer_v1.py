@@ -265,7 +265,8 @@ class PDFRenderer:
 
     def render_polyline_polygon(self, opcode: Dict[str, Any]):
         """Render polyline/polygon opcode."""
-        vertices = opcode.get('vertices', [])
+        # Support both 'vertices' (W2D parser) and 'points' (XPS parser)
+        vertices = opcode.get('vertices') or opcode.get('points', [])
         if not vertices:
             return
 
@@ -290,7 +291,8 @@ class PDFRenderer:
 
     def render_polytriangle(self, opcode: Dict[str, Any]):
         """Render polytriangle (triangle strip) opcode."""
-        vertices = opcode.get('vertices', [])
+        # Support both 'vertices' (W2D parser) and 'points' (XPS parser)
+        vertices = opcode.get('vertices') or opcode.get('points', [])
         if len(vertices) < 3:
             return
 
