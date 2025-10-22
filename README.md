@@ -5,7 +5,7 @@ A Python-based converter that transforms DWF (Design Web Format) and DWFX files 
 ## Current Status
 
 **Version:** 2.0.0 - Unified W2D + XPS Support
-**Completion:** ~75% (Core functionality + XPS parsing working)
+**Completion:** ~85% (Core functionality complete, all formats working)
 **Last Updated:** October 2025
 
 ### What Works
@@ -15,27 +15,24 @@ A Python-based converter that transforms DWF (Design Web Format) and DWFX files 
   - DWFX (.dwfx) files containing W2D streams
   - 47+ opcode handlers implemented (covers most common geometry)
 
-- **XPS Format Support (NEW!):**
+- **XPS Format Support (NEW - Direct Rendering!):**
   - XPS-only DWFX files (XML-based graphics)
-  - Automatic format detection and parser selection
-  - XPS path and glyph extraction
-  - 6,500+ elements parsed from test files
+  - **Direct XPS→PDF rendering** (no opcode translation layer)
+  - Multi-page DWFX support (3-4 pages per file)
+  - Vector graphics preservation (no rasterization)
+  - Automatic DPI conversion (XPS 96 DPI → PDF 72 DPI)
+  - XPS Path and Glyphs elements rendered directly to ReportLab
 
 - **CLI Features:**
   - Command-line interface for direct conversion
   - Python library for programmatic use
-  - Auto-scaling to fit drawings on PDF pages
-  - Automatic format detection (tries W2D first, falls back to XPS)
-
-### Work in Progress
-- XPS rendering refinement (colors working, geometry needs tuning)
-- Multi-page XPS support
-- Text rendering from XPS glyphs
+  - Automatic format detection (tries W2D first, falls back to direct XPS)
+  - Verbose mode for debugging and progress tracking
 
 ### Test Files Included
-- **3.dwf** (9.8 MB): Classic DWF with W2D stream - **Works** ✓ (W2D parser)
-- **1.dwfx** (5.2 MB): XPS-only DWFX - **Parsing Works** ✓ (XPS parser, rendering WIP)
-- **2.dwfx** (9.4 MB): XPS-only DWFX - **Parsing Works** ✓ (XPS parser, rendering WIP)
+- **3.dwf** (9.8 MB): Classic DWF with W2D stream - **✅ Works** (W2D parser → 1-page PDF)
+- **1.dwfx** (5.2 MB): XPS-only DWFX - **✅ Works** (Direct XPS renderer → 3-page PDF)
+- **2.dwfx** (9.4 MB): XPS-only DWFX - **✅ Works** (Direct XPS renderer → 4-page PDF)
 
 ## Architecture: Unified Dual-Parser Design
 
@@ -51,22 +48,25 @@ Input File (DWF/DWFX)
 │   (Binary opcode streams)       │
 └─────────────────────────────────┘
     │
-    ├─ Success → Render to PDF ✓
+    ├─ Success → W2D Opcodes → PDF Renderer → PDF ✓
     │
     └─ NotImplementedError ("XPS-only")
           ↓
     ┌─────────────────────────────────┐
-    │   Fall Back to XPS Parser       │
-    │   (XML FixedPage graphics)      │
+    │   Direct XPS Renderer           │
+    │   (NO opcode translation)       │
+    │                                 │
+    │   XPS XML → ReportLab → PDF    │
     └─────────────────────────────────┘
           ↓
-    Parse XPS → Render to PDF ✓
+    Multi-page Vector PDF ✓
 ```
 
 **Key Features:**
 - **Automatic format detection** - No need to specify parser
-- **Seamless fallback** - W2D fails gracefully, XPS takes over
-- **Unified rendering** - Both formats use same PDF renderer
+- **Seamless fallback** - W2D fails gracefully, direct XPS renderer takes over
+- **Two rendering paths** - W2D uses opcode dispatcher, XPS renders directly
+- **No opcode translation for XPS** - Direct mechanical processing (faster, simpler, more accurate)
 - **Single CLI command** - Works for all formats
 
 ## Quick Start
@@ -184,20 +184,17 @@ Output:
 
 🔍 Parsing DWF/DWFX file (trying W2D parser)...
    W2D parser: File is XPS-only
-   Trying XPS parser...
-✓ Parsed 6554 opcodes using XPS parser
-  Top opcode types:
-    polyline_polygon_16r: 4941
-    set_color_rgb: 1608
-    text: 3
-
-🔧 Auto page size: 18.48" × 20.79"
-
-🎨 Rendering PDF...
-✅ Success! Created 1.pdf (0.00 MB)
+   Using direct XPS renderer...
+📦 Extracting DWFX archive...
+📄 Found 3 page(s)
+📐 Page size: 1782.9 x 2547.0 pts (24.76" x 35.38")
+🎨 Rendering page 1/3...
+🎨 Rendering page 2/3...
+🎨 Rendering page 3/3...
+✅ Success! Created 1.pdf (0.32 MB)
 ```
 
-**Notice** how the converter automatically detects XPS-only files and falls back to the XPS parser!
+**Notice** how the converter automatically detects XPS-only files and uses the direct XPS renderer (no opcode translation)!
 
 ## Library Usage
 
@@ -268,18 +265,39 @@ render_dwf_to_pdf(
 )
 ```
 
-### Error Handling
+### Error Handling with Automatic XPS Fallback
 
 ```python
-try:
-    opcodes = parse_dwf_file("file.dwfx")
-    render_dwf_to_pdf(opcodes, "output.pdf")
-except NotImplementedError as e:
-    print(f"Unsupported format: {e}")
-except FileNotFoundError:
-    print("Input file not found")
-except Exception as e:
-    print(f"Error: {e}")
+from integration.dwf_parser_v1 import parse_dwf_file
+from integration.xps_to_pdf_direct import convert_xps_dwfx_to_pdf_direct
+from integration.pdf_renderer_v1 import render_dwf_to_pdf
+
+def convert_any_dwf(input_path, output_path):
+    """Convert DWF or DWFX to PDF (handles both W2D and XPS formats)."""
+    try:
+        # Try W2D parser first
+        opcodes = parse_dwf_file(input_path)
+        render_dwf_to_pdf(opcodes, output_path)
+        print(f"✅ W2D conversion successful: {output_path}")
+    except NotImplementedError as e:
+        # W2D failed, try direct XPS renderer
+        if "XPS-only" in str(e) or "XPS-based" in str(e):
+            print("Detected XPS format, using direct renderer...")
+            success = convert_xps_dwfx_to_pdf_direct(input_path, output_path, verbose=True)
+            if success:
+                print(f"✅ XPS conversion successful: {output_path}")
+            else:
+                print(f"❌ XPS conversion failed")
+        else:
+            raise
+    except FileNotFoundError:
+        print(f"❌ Input file not found: {input_path}")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
+# Use it:
+convert_any_dwf("drawing.dwf", "output.pdf")
+convert_any_dwf("design.dwfx", "output.pdf")
 ```
 
 ## Project Structure
@@ -291,15 +309,16 @@ git-practice/
 ├── .gitignore                         # Git ignore rules
 │
 ├── Test Files (Included)
-├── 3.dwf                              # Working test file (9.8 MB)
-├── 1.dwfx                             # XPS-only (not supported)
-├── 2.dwfx                             # XPS-only (not supported)
+├── 3.dwf                              # W2D format - WORKS ✅ (9.8 MB)
+├── 1.dwfx                             # XPS format - WORKS ✅ (5.0 MB, 3 pages)
+├── 2.dwfx                             # XPS format - WORKS ✅ (8.9 MB, 4 pages)
 │
 ├── dwf-to-pdf-project/                # Core library
 │   ├── README.md                      # Project documentation
 │   ├── integration/                   # Main conversion modules
-│   │   ├── dwf_parser_v1.py          # DWF/DWFX parser (WORKING)
-│   │   ├── pdf_renderer_v1.py        # PDF renderer (WORKING)
+│   │   ├── dwf_parser_v1.py          # W2D binary parser (WORKING)
+│   │   ├── xps_to_pdf_direct.py      # Direct XPS→PDF renderer (NEW!)
+│   │   ├── pdf_renderer_v1.py        # W2D PDF renderer (WORKING)
 │   │   └── test_integration.py       # Integration tests
 │   ├── agents/                        # Opcode handlers
 │   │   ├── agent_outputs/            # 71 opcode handler modules
@@ -328,9 +347,14 @@ git-practice/
 ### Core Components
 
 **`dwf-to-pdf-project/integration/`**
-- `dwf_parser_v1.py` (31KB): Main parser handling DWF/DWFX format detection and W2D stream extraction
-- `pdf_renderer_v1.py` (32KB): ReportLab-based PDF renderer with coordinate transformation
-- Both modules are production-ready with comprehensive error handling
+- `dwf_parser_v1.py` (31KB): W2D binary parser handling DWF/DWFX format detection and opcode extraction
+- `xps_to_pdf_direct.py` (15KB): **NEW!** Direct XPS→PDF renderer (no opcode translation)
+  - Parses XPS XML directly and renders to ReportLab canvas
+  - Handles multi-page DWFX files
+  - Automatic DPI conversion (XPS 96 DPI → PDF 72 DPI)
+  - Supports Path and Glyphs elements
+- `pdf_renderer_v1.py` (32KB): W2D opcode-based PDF renderer with coordinate transformation
+- All modules are production-ready with comprehensive error handling
 
 **`dwf-to-pdf-project/agents/agent_outputs/`**
 - 71 individual opcode handler modules (one per opcode family)
