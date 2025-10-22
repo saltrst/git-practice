@@ -42,3 +42,9 @@ Thumbs.db
 *.pyc
 test_output*.pdf
 test_*.pdf
+*_from_xps.pdf
+_temp_*/
+_temp_*
+test_pdf_gen.py
+test_xps_approach.py
+xps_to_pdf_fixed.py
