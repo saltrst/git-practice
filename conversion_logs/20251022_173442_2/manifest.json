@@ -1,0 +1,126 @@
+{
+  "timestamp": "20251022_173442",
+  "input_file": "2.dwfx",
+  "output_file": "test_fixes_2.pdf",
+  "steps": [
+    {
+      "step": "format_detection",
+      "timestamp": "2025-10-22T17:34:42.790688",
+      "data": {
+        "has_w2d": false,
+        "has_xps": true,
+        "format": "DWFX (XPS XML)",
+        "needs_preprocessing": false,
+        "w2d_files": [],
+        "xps_files": [
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage"
+        ],
+        "all_files": [
+          "_rels/.rels",
+          "[Content_Types].xml",
+          "CoreProperties.xml",
+          "FixedDocumentSequence.fdseq",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/FixedDocument.fdoc",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/_rels/FixedPage.fpage.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/_rels/FixedPage.fpage.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/_rels/FixedPage.fpage.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/_rels/FixedPage.fpage.rels",
+          "DWFDocumentSequence.dwfseq",
+          "_rels/DWFDocumentSequence.dwfseq.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/manifest.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/_rels/manifest.xml.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/4803FB7B-D3AC-483D-85DF-85A337530015.DWFProperties.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlotGlobal/descriptor.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlotGlobal/_rels/descriptor.xml.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlotGlobal/876F35FE-D622-42BE-AF30-8834F883ACB4.dsd",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/descriptor.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/_rels/descriptor.xml.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/2D66089B-6C15-4E7D-B9D5-2EB9F18D92EE.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/2D66089D-6C15-4E7D-B9D5-2EB9F18D92EE.tif",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/descriptor.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/_rels/descriptor.xml.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/788ABCB1-055A-437D-B35B-41F04A366B74.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/788ABCB3-055A-437D-B35B-41F04A366B74.tif",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/descriptor.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/_rels/descriptor.xml.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/876F3600-D622-42BE-AF30-8834F883ACB4.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B134D-68F5-47A6-AB10-7D64408F2E41.odttf",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B134A-68F5-47A6-AB10-7D64408F2E41.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B134B-68F5-47A6-AB10-7D64408F2E41.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B134C-68F5-47A6-AB10-7D64408F2E41.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B134E-68F5-47A6-AB10-7D64408F2E41.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B134F-68F5-47A6-AB10-7D64408F2E41.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B1350-68F5-47A6-AB10-7D64408F2E41.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/029B1351-68F5-47A6-AB10-7D64408F2E41.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/876F360A-D622-42BE-AF30-8834F883ACB4.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/876F360C-D622-42BE-AF30-8834F883ACB4.pia",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/descriptor.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/_rels/descriptor.xml.rels",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/3BD1D986-C8D7-4A02-965F-F9B2BAF74B89.png",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/3CB265EF-9553-44E1-B081-20A569664F5F.odttf",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/64266057-C2A6-44C0-A8EF-D0DDB4B924B6.odttf",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/77BA2E12-E4FC-4213-9EF1-145E1E0E26D2.xml",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/3BD1D989-C8D7-4A02-965F-F9B2BAF74B89.xml"
+        ]
+      }
+    },
+    {
+      "step": "routing_claim",
+      "timestamp": "2025-10-22T17:34:42.791191",
+      "data": {
+        "format_detected": "DWFX (XPS XML)",
+        "needs_preprocessing": false,
+        "planned_pipeline": [
+          "Extract XPS pages directly",
+          "Parse XPS XML",
+          "Generate PDF"
+        ]
+      }
+    },
+    {
+      "step": "preprocessing_applied",
+      "timestamp": "2025-10-22T17:34:42.791720",
+      "data": {
+        "skipped": true,
+        "reason": "XPS format detected, no preprocessing needed"
+      }
+    },
+    {
+      "step": "xps_extraction",
+      "timestamp": "2025-10-22T17:34:42.913692",
+      "data": {
+        "working_file": "2.dwfx",
+        "extract_directory": "conversion_logs/20251022_173442_2/step_04_xps_files",
+        "total_files_extracted": 49,
+        "fpage_files_found": [
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+          "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage"
+        ],
+        "fpage_count": 4,
+        "first_fpage_sample": "<?xml version=\"1.0\" encoding=\"utf-8\" ?><FixedPage xmlns=\"http://schemas.microsoft.com/xps/2005/06\" Height=\"3396\" Width=\"2377.1998697916665\" xml:lang=\"und\"><Canvas Name=\"dwfresource_5\"><Path Data=\"M 0, 0 L 2377.1998697916665,0 L2377.1998697916665,3396 L 0,3396 z\" RenderTransform=\"1.0000000000000002,-0,-0,1.0000000000000002,0,-6.8212102632969618e-13\"><Path.Fill><ImageBrush ImageSource=\"/dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/2D66089D-6C15-4E7D-B9D5-2EB9F18D92EE.tif\" Viewbox=\"0,0,2377.1998697916665,3396\" Viewport=\"0,0,2377.1998697916665,3396\" ViewboxUnits=\"Absolute\" ViewportUnits=\"Absolute\"/></Path.Fill></Path></Canvas></FixedPage>"
+      }
+    },
+    {
+      "step": "pdf_generation",
+      "timestamp": "2025-10-22T17:34:44.756033",
+      "data": {
+        "success": true,
+        "temp_pdf": "conversion_logs/20251022_173442_2/step_05_temp_output.pdf",
+        "temp_pdf_size": 1117443,
+        "final_pdf": "test_fixes_2.pdf"
+      }
+    }
+  ],
+  "errors": [],
+  "log_directory": "conversion_logs/20251022_173442_2",
+  "success": true
+}

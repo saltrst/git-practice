@@ -1,0 +1,8 @@
+{
+  "step": "preprocessing_applied",
+  "timestamp": "2025-10-22T17:33:54.729864",
+  "data": {
+    "skipped": true,
+    "reason": "XPS format detected, no preprocessing needed"
+  }
+}

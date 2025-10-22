@@ -297,53 +297,184 @@ def unzip_dwfx(dwfx_path: str, extract_dir: str) -> str:
     return extract_dir
 
 
+def parse_transform_matrix(transform_str: str) -> List[float]:
+    """
+    Parse XPS RenderTransform matrix string
+
+    Format: "a,b,c,d,e,f" representing the 2D affine transform matrix:
+    | a  c  e |
+    | b  d  f |
+    | 0  0  1 |
+
+    Returns: [a, b, c, d, e, f] or None if no transform
+    """
+    if not transform_str:
+        return None
+
+    try:
+        # Split by commas and parse as floats
+        values = [float(x.strip()) for x in transform_str.split(',')]
+        if len(values) == 6:
+            return values
+    except:
+        pass
+
+    return None
+
+
+def apply_transform_to_coordinates(coords: List[Tuple[float, float]],
+                                   matrix: List[float]) -> List[Tuple[float, float]]:
+    """
+    Apply 2D affine transformation matrix to coordinates
+
+    Matrix: [a, b, c, d, e, f]
+    Transform: x' = a*x + c*y + e
+               y' = b*x + d*y + f
+    """
+    if not matrix:
+        return coords
+
+    a, b, c, d, e, f = matrix
+    transformed = []
+
+    for x, y in coords:
+        x_new = a * x + c * y + e
+        y_new = b * x + d * y + f
+        transformed.append((x_new, y_new))
+
+    return transformed
+
+
+def transform_path_data(path_data: str, matrix: List[float]) -> str:
+    """
+    Apply transformation matrix to SVG path data string
+
+    Extracts all coordinates, transforms them, and rebuilds the path string
+    """
+    if not matrix or not path_data:
+        return path_data
+
+    # Parse path commands and extract coordinates
+    # Format: M x,y L x,y H x V y etc.
+    import re
+
+    # Match path commands with coordinates
+    cmd_pattern = r'([MLHVCSQTAZmlhvcsqtaz])\s*([-\d.,\s]+)'
+    commands = re.findall(cmd_pattern, path_data)
+
+    transformed_path = []
+
+    for cmd_letter, coords_str in commands:
+        # Extract numeric values
+        coords = re.findall(r'-?\d+\.?\d*', coords_str)
+        coords = [float(c) for c in coords]
+
+        # Transform based on command type
+        if cmd_letter in 'MmLl' and len(coords) >= 2:
+            # Move/Line with x,y pairs
+            points = [(coords[i], coords[i+1]) for i in range(0, len(coords)-1, 2)]
+            transformed_points = apply_transform_to_coordinates(points, matrix)
+            coords_new = [f"{x:.2f},{y:.2f}" for x, y in transformed_points]
+            transformed_path.append(f"{cmd_letter}{','.join(coords_new)}")
+
+        elif cmd_letter in 'Hh' and len(coords) >= 1:
+            # Horizontal line - transform x coordinate
+            for x in coords:
+                # For H command, y=0 (horizontal)
+                transformed = apply_transform_to_coordinates([(x, 0)], matrix)
+                x_new = transformed[0][0]
+                transformed_path.append(f"{cmd_letter}{x_new:.2f}")
+
+        elif cmd_letter in 'Vv' and len(coords) >= 1:
+            # Vertical line - transform y coordinate
+            for y in coords:
+                # For V command, x=0 (vertical)
+                transformed = apply_transform_to_coordinates([(0, y)], matrix)
+                y_new = transformed[0][1]
+                transformed_path.append(f"{cmd_letter}{y_new:.2f}")
+
+        elif cmd_letter in 'Zz':
+            # Close path - no coordinates
+            transformed_path.append(cmd_letter)
+
+        else:
+            # Other commands - keep as-is for now
+            transformed_path.append(f"{cmd_letter}{coords_str}")
+
+    return ' '.join(transformed_path) if transformed_path else path_data
+
+
 def parse_xps_page(xml_path: str) -> Dict:
-    """Parse XPS page XML for paths, colors, coordinates"""
+    """
+    Parse XPS page XML for paths, colors, coordinates
+    NOW WITH RENDERTRANSFORM SUPPORT!
+    """
     tree = ET.parse(xml_path)
     root = tree.getroot()
-    
+
     paths = []
     canvas_items = []
-    
+
     # XPS namespaces
     ns = {'': 'http://schemas.microsoft.com/xps/2005/06'}
-    
-    for elem in root.iter():
+
+    def parse_element(elem, parent_transform=None):
+        """Recursively parse elements and apply parent transforms"""
         tag = elem.tag.split('}')[-1] if '}' in elem.tag else elem.tag
-        
-        # Extract Path elements
+
+        # Get transform for this element (if it's a Canvas)
+        current_transform = parent_transform
+        if tag == 'Canvas':
+            transform_str = elem.attrib.get('RenderTransform', '')
+            if transform_str:
+                matrix = parse_transform_matrix(transform_str)
+                if matrix:
+                    current_transform = matrix
+
+        # Extract Path elements and apply transform
         if tag == 'Path':
+            path_data_str = elem.attrib.get('Data', '')
+
+            # Apply transform to path data
+            if current_transform:
+                path_data_str = transform_path_data(path_data_str, current_transform)
+
             path_data = {
                 'type': 'path',
-                'data': elem.attrib.get('Data', ''),
+                'data': path_data_str,
                 'fill': elem.attrib.get('Fill', ''),
                 'stroke': elem.attrib.get('Stroke', ''),
                 'stroke_thickness': elem.attrib.get('StrokeThickness', '1'),
                 'opacity': elem.attrib.get('Opacity', '1.0')
             }
             paths.append(path_data)
-        
-        # Extract Canvas elements
-        elif tag == 'Canvas':
-            canvas_items.append({
-                'type': 'canvas',
-                'left': elem.attrib.get('Canvas.Left', '0'),
-                'top': elem.attrib.get('Canvas.Top', '0'),
-                'width': elem.attrib.get('Width', ''),
-                'height': elem.attrib.get('Height', '')
-            })
-        
-        # Extract Glyphs (text)
+
+        # Extract Glyphs (text) and apply transform
         elif tag == 'Glyphs':
+            origin_x = float(elem.attrib.get('OriginX', '0'))
+            origin_y = float(elem.attrib.get('OriginY', '0'))
+
+            # Apply transform to text position
+            if current_transform:
+                transformed_pos = apply_transform_to_coordinates([(origin_x, origin_y)], current_transform)
+                origin_x, origin_y = transformed_pos[0]
+
             canvas_items.append({
                 'type': 'text',
-                'origin_x': elem.attrib.get('OriginX', '0'),
-                'origin_y': elem.attrib.get('OriginY', '0'),
+                'origin_x': str(origin_x),
+                'origin_y': str(origin_y),
                 'unicode_string': elem.attrib.get('UnicodeString', ''),
                 'fill': elem.attrib.get('Fill', ''),
                 'font_size': elem.attrib.get('FontRenderingEmSize', '12')
             })
-    
+
+        # Recursively process children
+        for child in elem:
+            parse_element(child, current_transform)
+
+    # Start parsing from root
+    parse_element(root)
+
     return {
         'paths': paths,
         'canvas_items': canvas_items,
