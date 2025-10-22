@@ -1,0 +1,124 @@
+{
+  "already_completed": [
+    {"hex": "0x6C", "char": "l", "name": "DRAW_LINE_32R"},
+    {"hex": "0x70", "char": "p", "name": "DRAW_POLYLINE_POLYGON_32R"},
+    {"hex": "0x63", "char": "c", "name": "SET_COLOR_INDEXED"},
+    {"hex": "0x72", "char": "r", "name": "DRAW_CIRCLE_32R"}
+  ],
+  "agent_batches": [
+    {
+      "agent_id": 4,
+      "priority": "high",
+      "category": "core_geometry_ascii",
+      "opcodes": [
+        {"hex": "0x4C", "char": "L", "name": "DRAW_LINE", "type": "ascii_line"},
+        {"hex": "0x50", "char": "P", "name": "DRAW_POLYLINE_POLYGON", "type": "ascii_polygon"},
+        {"hex": "0x52", "char": "R", "name": "DRAW_CIRCLE", "type": "ascii_circle"},
+        {"hex": "0x45", "char": "E", "name": "DRAW_ELLIPSE", "type": "ascii_ellipse"},
+        {"hex": "0x54", "char": "T", "name": "DRAW_POLYTRIANGLE", "type": "ascii_polytriangle"}
+      ]
+    },
+    {
+      "agent_id": 5,
+      "priority": "high",
+      "category": "core_geometry_16bit",
+      "opcodes": [
+        {"hex": "0x0C", "char": "\\x0C", "name": "DRAW_LINE_16R", "type": "binary_line_16bit_relative"},
+        {"hex": "0x10", "char": "\\x10", "name": "DRAW_POLYLINE_POLYGON_16R", "type": "binary_polygon_16bit"},
+        {"hex": "0x12", "char": "\\x12", "name": "DRAW_CIRCLE_16R", "type": "binary_circle_16bit"},
+        {"hex": "0x14", "char": "\\x14", "name": "DRAW_POLYTRIANGLE_16R", "type": "binary_polytriangle_16bit"},
+        {"hex": "0x74", "char": "t", "name": "DRAW_POLYTRIANGLE_32R", "type": "binary_polytriangle_32bit"}
+      ]
+    },
+    {
+      "agent_id": 6,
+      "priority": "high",
+      "category": "attributes_color_fill",
+      "opcodes": [
+        {"hex": "0x43", "char": "C", "name": "SET_COLOR_INDEXED", "type": "ascii_color_index"},
+        {"hex": "0x03", "char": "\\x03", "name": "SET_COLOR_RGBA", "type": "binary_color_rgba"},
+        {"hex": "0x46", "char": "F", "name": "SET_FILL_ON", "type": "fill_on"},
+        {"hex": "0x66", "char": "f", "name": "SET_FILL_OFF", "type": "fill_off"},
+        {"hex": "0x56", "char": "V", "name": "SET_VISIBILITY_ON", "type": "visibility_on"}
+      ]
+    },
+    {
+      "agent_id": 7,
+      "priority": "high",
+      "category": "attributes_line_visibility",
+      "opcodes": [
+        {"hex": "0x76", "char": "v", "name": "SET_VISIBILITY_OFF", "type": "visibility_off"},
+        {"hex": "0x17", "char": "\\x17", "name": "SET_LINE_WEIGHT", "type": "binary_line_weight"},
+        {"hex": "0xCC", "char": "\\xCC", "name": "SET_LINE_PATTERN", "type": "binary_line_pattern"},
+        {"hex": "0x53", "char": "S", "name": "SET_MACRO_SCALE", "type": "ascii_macro_scale"},
+        {"hex": "0x73", "char": "s", "name": "SET_MACRO_SCALE", "type": "binary_macro_scale"}
+      ]
+    },
+    {
+      "agent_id": 8,
+      "priority": "high",
+      "category": "text_font",
+      "opcodes": [
+        {"hex": "0x06", "char": "\\x06", "name": "SET_FONT", "type": "binary_font"},
+        {"hex": "0x78", "char": "x", "name": "DRAW_TEXT_BASIC", "type": "binary_text_basic"},
+        {"hex": "0x18", "char": "\\x18", "name": "DRAW_TEXT_COMPLEX", "type": "binary_text_complex"},
+        {"hex": "0x65", "char": "e", "name": "DRAW_ELLIPSE_32R", "type": "binary_ellipse_32bit"},
+        {"hex": "0x4F", "char": "O", "name": "SET_ORIGIN_32", "type": "binary_origin"}
+      ]
+    },
+    {
+      "agent_id": 9,
+      "priority": "medium",
+      "category": "bezier_curves",
+      "opcodes": [
+        {"hex": "0x02", "char": "\\x02", "name": "BEZIER_16R", "type": "binary_bezier_16bit"},
+        {"hex": "0x62", "char": "b", "name": "BEZIER_32", "type": "binary_bezier_32bit"},
+        {"hex": "0x42", "char": "B", "name": "BEZIER_32R", "type": "binary_bezier_32bit_relative"},
+        {"hex": "0x0B", "char": "\\x0B", "name": "DRAW_CONTOUR_SET_16R", "type": "binary_contour_16bit"},
+        {"hex": "0x6B", "char": "k", "name": "DRAW_CONTOUR_SET_32R", "type": "binary_contour_32bit"}
+      ]
+    },
+    {
+      "agent_id": 10,
+      "priority": "medium",
+      "category": "gouraud_shading",
+      "opcodes": [
+        {"hex": "0x07", "char": "\\x07", "name": "DRAW_GOURAUD_POLYTRIANGLE_16R", "type": "binary_gouraud_polytri_16bit"},
+        {"hex": "0x67", "char": "g", "name": "DRAW_GOURAUD_POLYTRIANGLE_32R", "type": "binary_gouraud_polytri_32bit"},
+        {"hex": "0x11", "char": "\\x11", "name": "DRAW_GOURAUD_POLYLINE_16R", "type": "binary_gouraud_polyline_16bit"},
+        {"hex": "0x71", "char": "q", "name": "DRAW_GOURAUD_POLYLINE_32R", "type": "binary_gouraud_polyline_32bit"},
+        {"hex": "0x92", "char": "\\x92", "name": "DRAW_CIRCULAR_ARC_32R", "type": "binary_circular_arc"}
+      ]
+    },
+    {
+      "agent_id": 11,
+      "priority": "medium",
+      "category": "macros_markers",
+      "opcodes": [
+        {"hex": "0x47", "char": "G", "name": "SET_MACRO_INDEX", "type": "ascii_macro_index"},
+        {"hex": "0x4D", "char": "M", "name": "DRAW_MACRO_DRAW", "type": "ascii_macro_draw"},
+        {"hex": "0x6D", "char": "m", "name": "DRAW_MACRO_DRAW_32R", "type": "binary_macro_draw_32bit"},
+        {"hex": "0x8D", "char": "\\x8D", "name": "DRAW_MACRO_DRAW_16R", "type": "binary_macro_draw_16bit"},
+        {"hex": "0xAC", "char": "\\xAC", "name": "SET_LAYER", "type": "binary_layer"}
+      ]
+    },
+    {
+      "agent_id": 12,
+      "priority": "medium",
+      "category": "object_nodes",
+      "opcodes": [
+        {"hex": "0x0E", "char": "\\x0E", "name": "OBJECT_NODE_AUTO", "type": "binary_object_node_auto"},
+        {"hex": "0x6E", "char": "n", "name": "OBJECT_NODE_16", "type": "binary_object_node_16bit"},
+        {"hex": "0x4E", "char": "N", "name": "OBJECT_NODE_32", "type": "binary_object_node_32bit"}
+      ]
+    },
+    {
+      "agent_id": 13,
+      "priority": "low",
+      "category": "extended_opcodes",
+      "opcodes": []
+    }
+  ],
+  "total_opcodes_to_translate": 46,
+  "total_agents": 10
+}

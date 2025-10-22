@@ -1,0 +1,61 @@
+{
+  "opcodes": [
+    {
+      "hex": "0x6C",
+      "name": "binary_line_32r",
+      "description": "Binary line with 32-bit coordinates",
+      "cpp_file": "develop/global/src/dwf/whiptk/pointset.cpp",
+      "format": [
+        {"type": "int32", "name": "x1", "struct_code": "<l", "bytes": 4},
+        {"type": "int32", "name": "y1", "struct_code": "<l", "bytes": 4},
+        {"type": "int32", "name": "x2", "struct_code": "<l", "bytes": 4},
+        {"type": "int32", "name": "y2", "struct_code": "<l", "bytes": 4}
+      ],
+      "total_bytes": 16,
+      "struct_format": "<llll"
+    },
+    {
+      "hex": "0x70",
+      "name": "binary_polygon_32r",
+      "description": "Binary polygon with 32-bit coordinates",
+      "cpp_file": "develop/global/src/dwf/whiptk/pointset.cpp",
+      "format": [
+        {"type": "uint8", "name": "count", "struct_code": "<B", "bytes": 1},
+        {"type": "uint16", "name": "extended_count", "struct_code": "<H", "bytes": 2, "optional": true},
+        {"type": "int32[]", "name": "coordinates", "struct_code": "<l", "bytes": 4, "repeat": "count"}
+      ]
+    },
+    {
+      "hex": "0x63",
+      "name": "binary_color_indexed",
+      "description": "Set color using palette index",
+      "cpp_file": "develop/global/src/dwf/whiptk/color.cpp",
+      "format": [
+        {"type": "uint8", "name": "color_index", "struct_code": "<B", "bytes": 1}
+      ],
+      "total_bytes": 1,
+      "struct_format": "<B"
+    },
+    {
+      "hex": "0x72",
+      "name": "binary_rectangle",
+      "description": "Binary rectangle/circle",
+      "cpp_file": "develop/global/src/dwf/whiptk/pointset.cpp",
+      "format": [
+        {"type": "int32", "name": "x", "struct_code": "<l", "bytes": 4},
+        {"type": "int32", "name": "y", "struct_code": "<l", "bytes": 4},
+        {"type": "uint32", "name": "packed_dimensions", "struct_code": "<L", "bytes": 4}
+      ],
+      "total_bytes": 12,
+      "struct_format": "<llL"
+    }
+  ],
+  "type_mappings": {
+    "int8": {"struct_code": "<b", "bytes": 1},
+    "uint8": {"struct_code": "<B", "bytes": 1},
+    "int16": {"struct_code": "<h", "bytes": 2},
+    "uint16": {"struct_code": "<H", "bytes": 2},
+    "int32": {"struct_code": "<l", "bytes": 4},
+    "uint32": {"struct_code": "<L", "bytes": 4}
+  }
+}
