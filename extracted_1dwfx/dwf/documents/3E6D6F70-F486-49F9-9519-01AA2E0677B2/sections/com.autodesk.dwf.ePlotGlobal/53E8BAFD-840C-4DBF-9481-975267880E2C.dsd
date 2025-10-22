@@ -1,0 +1,42 @@
+[DWF6Version]
+Ver=1
+[DWF6MinorVersion]
+MinorVer=1
+[DWF6Sheet:194980-21-Model]
+DWG=D:\AreaCalculation\In\194980-21\194980-21.DWG
+Layout=Model
+Setup=
+OriginalSheetPath=
+Has Plot Port=0
+SheetIdentifier=1FCAD500-8ED9-42B9-9BEE-4C0F5B67A50A
+Has3DDWF=0
+[Target]
+Type=4
+DWF=D:\AreaCalculation\Out\194980-21\194980-21_main_1.dwfx
+OUT=
+PWD=
+[AutoCAD Block Data]
+IncludeBlockInfo=0
+BlockTmplFilePath=
+[SheetSet Properties]
+IsSheetSet=FALSE
+IsHomogeneous=FALSE
+SheetSet Name=
+NoOfCopies=0
+PlotStampOn=FALSE
+ViewFile=FALSE
+JobID=0
+SelectionSetName=
+AcadProfile=
+CategoryName=
+LogFilePath=
+IncludeLayer=FALSE
+LineMerge=FALSE
+CurrentPrecision=
+PromptForDwfName=TRUE
+PwdProtectPublishedDWF=FALSE
+PromptForPwd=FALSE
+RepublishingMarkups=FALSE
+PublishSheetSetMetadata=FALSE
+PublishSheetMetadata=FALSE
+3DDWFOptions=0 0

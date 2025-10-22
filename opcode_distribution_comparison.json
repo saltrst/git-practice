@@ -1,0 +1,23 @@
+{
+  "3.dwf": {
+    "end_of_stream": 1,
+    "error": 7,
+    "polytriangle_16r": 1,
+    "set_color_map_index": 1,
+    "set_color_rgb32": 2,
+    "set_origin": 1,
+    "unknown": 62,
+    "unknown_extended_ascii": 1,
+    "wedge": 1
+  },
+  "drawing.w2d": {
+    "end_of_stream": 1,
+    "error": 1,
+    "line_16r": 2,
+    "polyline_polygon_16r": 25,
+    "polytriangle_16r": 917,
+    "set_origin": 10,
+    "unknown": 10,
+    "unknown_extended_ascii": 17
+  }
+}

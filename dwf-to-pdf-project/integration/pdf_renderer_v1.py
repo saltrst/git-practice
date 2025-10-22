@@ -148,16 +148,18 @@ class PDFRenderer:
     Main PDF renderer for DWF opcodes.
     """
 
-    def __init__(self, output_path: str, pagesize=letter):
+    def __init__(self, output_path: str, pagesize=letter, scale=0.1):
         """
         Initialize PDF renderer.
 
         Args:
             output_path: Path to output PDF file
             pagesize: Page size (default letter)
+            scale: Scale factor for coordinate transformation (default 0.1)
         """
         self.output_path = output_path
         self.pagesize = pagesize
+        self.scale = scale
         self.canvas = canvas.Canvas(output_path, pagesize=pagesize)
         self.page_width, self.page_height = pagesize
 
@@ -263,7 +265,8 @@ class PDFRenderer:
 
     def render_polyline_polygon(self, opcode: Dict[str, Any]):
         """Render polyline/polygon opcode."""
-        vertices = opcode.get('vertices', [])
+        # Support both 'vertices' (W2D parser) and 'points' (XPS parser)
+        vertices = opcode.get('vertices') or opcode.get('points', [])
         if not vertices:
             return
 
@@ -288,7 +291,8 @@ class PDFRenderer:
 
     def render_polytriangle(self, opcode: Dict[str, Any]):
         """Render polytriangle (triangle strip) opcode."""
-        vertices = opcode.get('vertices', [])
+        # Support both 'vertices' (W2D parser) and 'points' (XPS parser)
+        vertices = opcode.get('vertices') or opcode.get('points', [])
         if len(vertices) < 3:
             return
 
@@ -472,6 +476,23 @@ class PDFRenderer:
         b = opcode.get('blue', 0)
         a = opcode.get('alpha', 255)
         self.current_state.foreground_color = (r, g, b, a)
+
+    def handle_set_color_rgb(self, opcode: Dict[str, Any]):
+        """Handle set_color_rgb opcode (from XPS parser).
+
+        XPS parser generates RGB values as floats 0.0-1.0.
+        Convert to 0-255 range for internal use.
+        """
+        r = opcode.get('r', 0.0)
+        g = opcode.get('g', 0.0)
+        b = opcode.get('b', 0.0)
+
+        # Convert from 0.0-1.0 to 0-255 range
+        r_int = int(r * 255) if r <= 1.0 else int(r)
+        g_int = int(g * 255) if g <= 1.0 else int(g)
+        b_int = int(b * 255) if b <= 1.0 else int(b)
+
+        self.current_state.foreground_color = (r_int, g_int, b_int, 255)
 
     def handle_set_color_rgb32(self, opcode: Dict[str, Any]):
         """Handle SET_COLOR_RGB32 opcode."""
@@ -673,6 +694,10 @@ class PDFRenderer:
             elif opcode_type in ['SET_COLOR_RGBA', 'set_color_rgba']:
                 self.handle_set_color_rgba(opcode)
 
+            elif opcode_type in ['set_color_rgb', 'SET_COLOR_RGB']:
+                # XPS parser generates this - treat as RGBA with alpha=255
+                self.handle_set_color_rgb(opcode)
+
             elif opcode_type == 'set_color_rgb32':
                 self.handle_set_color_rgb32(opcode)
 
@@ -781,6 +806,9 @@ class PDFRenderer:
 
     def finish(self):
         """Finalize the PDF and write to disk."""
+        # CRITICAL: Must call showPage() before save() to finalize the current page
+        # Without this, PDF will have 0 pages even if geometry was rendered!
+        self.canvas.showPage()
         self.canvas.save()
 
         print(f"\nPDF Rendering Complete:")
@@ -795,7 +823,7 @@ class PDFRenderer:
 # =============================================================================
 
 def render_dwf_to_pdf(parsed_opcodes: List[Dict[str, Any]], output_path: str,
-                     pagesize=letter) -> bool:
+                     pagesize=letter, scale=0.1) -> bool:
     """
     Render parsed DWF opcodes to a PDF file.
 
@@ -803,12 +831,13 @@ def render_dwf_to_pdf(parsed_opcodes: List[Dict[str, Any]], output_path: str,
         parsed_opcodes: List of parsed opcode dictionaries
         output_path: Path to output PDF file
         pagesize: Page size (default letter)
+        scale: Scale factor for coordinate transformation (default 0.1)
 
     Returns:
         True if rendering succeeded, False otherwise
     """
     try:
-        renderer = PDFRenderer(output_path, pagesize=pagesize)
+        renderer = PDFRenderer(output_path, pagesize=pagesize, scale=scale)
 
         for opcode in parsed_opcodes:
             renderer.render_opcode(opcode)

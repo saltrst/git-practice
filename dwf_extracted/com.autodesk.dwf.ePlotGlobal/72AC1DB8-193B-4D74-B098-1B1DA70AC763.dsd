@@ -1,0 +1,42 @@
+[DWF6Version]
+Ver=1
+[DWF6MinorVersion]
+MinorVer=1
+[DWF6Sheet:mll5h1-Model]
+DWG=C:\Users\Lora\Dubitzky Irena\Irena dubitzky - Documents\All Data\0all\ramat gan\mll5\mll5h1.dwg
+Layout=Model
+Setup=
+OriginalSheetPath=
+Has Plot Port=0
+SheetIdentifier=7E8FE58B-2A82-4BAB-93F0-45E6A91A2EE3
+Has3DDWF=0
+[Target]
+Type=1
+DWF=C:\Users\Lora\Dubitzky Irena\Irena dubitzky - Documents\All Data\0all\ramat gan\mll5\0send\mll5h1-Model.dwf
+OUT=
+PWD=
+[AutoCAD Block Data]
+IncludeBlockInfo=0
+BlockTmplFilePath=
+[SheetSet Properties]
+IsSheetSet=FALSE
+IsHomogeneous=FALSE
+SheetSet Name=
+NoOfCopies=0
+PlotStampOn=FALSE
+ViewFile=FALSE
+JobID=0
+SelectionSetName=
+AcadProfile=
+CategoryName=
+LogFilePath=
+IncludeLayer=FALSE
+LineMerge=FALSE
+CurrentPrecision=
+PromptForDwfName=TRUE
+PwdProtectPublishedDWF=FALSE
+PromptForPwd=FALSE
+RepublishingMarkups=FALSE
+PublishSheetSetMetadata=FALSE
+PublishSheetMetadata=FALSE
+3DDWFOptions=0 0
