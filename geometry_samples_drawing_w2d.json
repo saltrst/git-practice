@@ -1,0 +1,302 @@
+[
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        0,
+        0
+      ],
+      [
+        -95,
+        0
+      ],
+      [
+        95,
+        -614
+      ],
+      [
+        -95,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        -756,
+        4607
+      ],
+      [
+        -685,
+        0
+      ],
+      [
+        685,
+        -95
+      ],
+      [
+        -685,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        614,
+        0
+      ],
+      [
+        -47,
+        0
+      ],
+      [
+        47,
+        -47
+      ],
+      [
+        -47,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        -496,
+        -3354
+      ],
+      [
+        -47,
+        0
+      ],
+      [
+        47,
+        -308
+      ],
+      [
+        -47,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        1417,
+        0
+      ],
+      [
+        -1417,
+        0
+      ],
+      [
+        1417,
+        -47
+      ],
+      [
+        -1417,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        47,
+        0
+      ],
+      [
+        -47,
+        0
+      ],
+      [
+        47,
+        -23
+      ],
+      [
+        -47,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        1512,
+        -1347
+      ],
+      [
+        -95,
+        0
+      ],
+      [
+        95,
+        -118
+      ],
+      [
+        -95,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        -1370,
+        1063
+      ],
+      [
+        -47,
+        0
+      ],
+      [
+        47,
+        -1063
+      ],
+      [
+        -47,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        1512,
+        0
+      ],
+      [
+        -1512,
+        0
+      ],
+      [
+        1512,
+        -47
+      ],
+      [
+        -1512,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  },
+  {
+    "opcode": 20,
+    "opcode_name": "DRAW_POLYTRIANGLE_16R",
+    "type": "polytriangle_16r",
+    "count": 4,
+    "points": [
+      [
+        47,
+        0
+      ],
+      [
+        -47,
+        0
+      ],
+      [
+        47,
+        -12
+      ],
+      [
+        -47,
+        0
+      ]
+    ],
+    "triangle_count": 2,
+    "extended_count": false,
+    "bytes_read": 17,
+    "relative": true,
+    "opcode_byte": 20,
+    "opcode_hex": "0x14"
+  }
+]

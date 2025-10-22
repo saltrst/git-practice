@@ -148,16 +148,18 @@ class PDFRenderer:
     Main PDF renderer for DWF opcodes.
     """
 
-    def __init__(self, output_path: str, pagesize=letter):
+    def __init__(self, output_path: str, pagesize=letter, scale=0.1):
         """
         Initialize PDF renderer.
 
         Args:
             output_path: Path to output PDF file
             pagesize: Page size (default letter)
+            scale: Scale factor for coordinate transformation (default 0.1)
         """
         self.output_path = output_path
         self.pagesize = pagesize
+        self.scale = scale
         self.canvas = canvas.Canvas(output_path, pagesize=pagesize)
         self.page_width, self.page_height = pagesize
 
@@ -795,7 +797,7 @@ class PDFRenderer:
 # =============================================================================
 
 def render_dwf_to_pdf(parsed_opcodes: List[Dict[str, Any]], output_path: str,
-                     pagesize=letter) -> bool:
+                     pagesize=letter, scale=0.1) -> bool:
     """
     Render parsed DWF opcodes to a PDF file.
 
@@ -803,12 +805,13 @@ def render_dwf_to_pdf(parsed_opcodes: List[Dict[str, Any]], output_path: str,
         parsed_opcodes: List of parsed opcode dictionaries
         output_path: Path to output PDF file
         pagesize: Page size (default letter)
+        scale: Scale factor for coordinate transformation (default 0.1)
 
     Returns:
         True if rendering succeeded, False otherwise
     """
     try:
-        renderer = PDFRenderer(output_path, pagesize=pagesize)
+        renderer = PDFRenderer(output_path, pagesize=pagesize, scale=scale)
 
         for opcode in parsed_opcodes:
             renderer.render_opcode(opcode)
