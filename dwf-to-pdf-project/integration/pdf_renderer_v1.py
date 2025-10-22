@@ -475,6 +475,23 @@ class PDFRenderer:
         a = opcode.get('alpha', 255)
         self.current_state.foreground_color = (r, g, b, a)
 
+    def handle_set_color_rgb(self, opcode: Dict[str, Any]):
+        """Handle set_color_rgb opcode (from XPS parser).
+
+        XPS parser generates RGB values as floats 0.0-1.0.
+        Convert to 0-255 range for internal use.
+        """
+        r = opcode.get('r', 0.0)
+        g = opcode.get('g', 0.0)
+        b = opcode.get('b', 0.0)
+
+        # Convert from 0.0-1.0 to 0-255 range
+        r_int = int(r * 255) if r <= 1.0 else int(r)
+        g_int = int(g * 255) if g <= 1.0 else int(g)
+        b_int = int(b * 255) if b <= 1.0 else int(b)
+
+        self.current_state.foreground_color = (r_int, g_int, b_int, 255)
+
     def handle_set_color_rgb32(self, opcode: Dict[str, Any]):
         """Handle SET_COLOR_RGB32 opcode."""
         r = opcode.get('red', 0)
@@ -674,6 +691,10 @@ class PDFRenderer:
             # === COLOR ATTRIBUTE OPCODES ===
             elif opcode_type in ['SET_COLOR_RGBA', 'set_color_rgba']:
                 self.handle_set_color_rgba(opcode)
+
+            elif opcode_type in ['set_color_rgb', 'SET_COLOR_RGB']:
+                # XPS parser generates this - treat as RGBA with alpha=255
+                self.handle_set_color_rgb(opcode)
 
             elif opcode_type == 'set_color_rgb32':
                 self.handle_set_color_rgb32(opcode)

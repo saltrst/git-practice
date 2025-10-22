@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-DWF to PDF Converter - Command Line Interface
+DWF to PDF Converter - Command Line Interface (Unified)
 
-Converts DWF/DWFX files to PDF format using the integrated parser and renderer.
+Converts DWF/DWFX files to PDF format using integrated W2D and XPS parsers.
 
 Usage:
     python dwf2pdf.py input.dwf output.pdf
@@ -10,11 +10,13 @@ Usage:
     python dwf2pdf.py input.dwf                 # Creates input.pdf
 
 Supported Formats:
-    - Classic DWF (.dwf)
-    - DWF 6.0+ (.dwf)
-    - DWFX with W2D streams (.dwfx)
+    - Classic DWF (.dwf) - W2D binary streams
+    - DWF 6.0+ (.dwf) - ZIP with W2D streams
+    - DWFX with W2D streams (.dwfx) - W2D parser
+    - DWFX XPS-only (.dwfx) - XPS parser (NEW!)
 
 Author: DWF-to-PDF Converter Team
+Version: 2.0.0 - Unified W2D + XPS support
 """
 
 import sys
@@ -26,6 +28,7 @@ project_root = Path(__file__).parent / "dwf-to-pdf-project"
 sys.path.insert(0, str(project_root))
 
 from integration.dwf_parser_v1 import parse_dwf_file
+from integration.xps_parser import parse_xps_dwfx, is_xps_dwfx
 from integration.pdf_renderer_v1 import render_dwf_to_pdf
 
 
@@ -41,12 +44,12 @@ Examples:
   %(prog)s file.dwf                    # Creates file.pdf
 
 Supported Formats:
-  ✓ Classic DWF (.dwf) - Pre-6.0 format
-  ✓ DWF 6.0+ (.dwf) - ZIP with W2D streams
-  ✓ DWFX (.dwfx) - With W2D streams
-  ✗ DWFX (.dwfx) - XPS-only (no W2D)
+  ✓ Classic DWF (.dwf) - Pre-6.0 format (W2D parser)
+  ✓ DWF 6.0+ (.dwf) - ZIP with W2D streams (W2D parser)
+  ✓ DWFX (.dwfx) - With W2D streams (W2D parser)
+  ✓ DWFX (.dwfx) - XPS-only (XPS parser - NEW!)
 
-For XPS-only DWFX files, use Autodesk DWG TrueView to convert to DWF format.
+The converter automatically detects the format and uses the appropriate parser.
         """
     )
 
@@ -118,13 +121,40 @@ For XPS-only DWFX files, use Autodesk DWG TrueView to convert to DWF format.
             print()
 
         # Parse DWF/DWFX file
-        if args.verbose:
-            print("🔍 Parsing DWF/DWFX file...")
+        # Try W2D parser first, fall back to XPS parser if needed
+        parser_used = "W2D"
+        opcodes = None
 
-        opcodes = parse_dwf_file(str(input_path))
+        try:
+            if args.verbose:
+                print("🔍 Parsing DWF/DWFX file (trying W2D parser)...")
+
+            opcodes = parse_dwf_file(str(input_path))
+
+        except NotImplementedError as e:
+            # W2D parser failed, try XPS parser
+            if "XPS-only" in str(e) or "XPS-based" in str(e):
+                if args.verbose:
+                    print("   W2D parser: File is XPS-only")
+                    print("   Trying XPS parser...")
+
+                try:
+                    opcodes = parse_xps_dwfx(str(input_path))
+                    parser_used = "XPS"
+                except Exception as xps_error:
+                    print(f"❌ Error: Both parsers failed", file=sys.stderr)
+                    print(f"   W2D: {e}", file=sys.stderr)
+                    print(f"   XPS: {xps_error}", file=sys.stderr)
+                    return 1
+            else:
+                raise
+
+        if opcodes is None:
+            print(f"❌ Error: Failed to parse {input_path}", file=sys.stderr)
+            return 1
 
         if args.verbose:
-            print(f"✓ Parsed {len(opcodes)} opcodes")
+            print(f"✓ Parsed {len(opcodes)} opcodes using {parser_used} parser")
 
             # Show opcode distribution
             from collections import Counter
