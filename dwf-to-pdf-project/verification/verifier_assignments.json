@@ -1,0 +1,123 @@
+{
+  "verifier_assignments": [
+    {
+      "verifier_id": 1,
+      "agent_files": [
+        "agent_01_opcode_0x6C.py",
+        "agent_02_opcodes_0x70_0x63.py",
+        "agent_03_opcode_0x72.py",
+        "agent_04_ascii_geometry.py",
+        "agent_05_binary_geometry_16bit.py"
+      ],
+      "opcode_count": "~23 opcodes (4+5+5+5+5-1 overlap)",
+      "focus_categories": ["Binary Geometry", "ASCII Geometry"]
+    },
+    {
+      "verifier_id": 2,
+      "agent_files": [
+        "agent_06_attributes_color_fill.py",
+        "agent_07_attributes_line_visibility.py",
+        "agent_18_attributes_color_layer.py",
+        "agent_19_attributes_line_style.py"
+      ],
+      "opcode_count": "~20 opcodes",
+      "focus_categories": ["Color Attributes", "Line Attributes"]
+    },
+    {
+      "verifier_id": 3,
+      "agent_files": [
+        "agent_08_text_font.py",
+        "agent_22_text_font.py",
+        "agent_23_text_formatting.py",
+        "agent_41_text_attributes.py"
+      ],
+      "opcode_count": "~24 opcodes",
+      "focus_categories": ["Text", "Font", "Hebrew Support"]
+    },
+    {
+      "verifier_id": 4,
+      "agent_files": [
+        "agent_09_bezier_curves.py",
+        "agent_10_gouraud_shading.py",
+        "agent_24_geometry.py",
+        "agent_38_drawing_primitives.py"
+      ],
+      "opcode_count": "~23 opcodes",
+      "focus_categories": ["Bezier", "Gouraud Shading", "Advanced Geometry"]
+    },
+    {
+      "verifier_id": 5,
+      "agent_files": [
+        "agent_11_macros_markers.py",
+        "agent_12_object_nodes.py",
+        "agent_39_markers_symbols.py",
+        "agent_42_state_management.py"
+      ],
+      "opcode_count": "~16 opcodes",
+      "focus_categories": ["Macros", "Object Nodes", "State Management"]
+    },
+    {
+      "verifier_id": 6,
+      "agent_files": [
+        "agent_14_file_structure.py",
+        "agent_15_metadata_1.py",
+        "agent_16_metadata_2.py",
+        "agent_17_metadata_3.py",
+        "agent_43_stream_control.py"
+      ],
+      "opcode_count": "~27 opcodes",
+      "focus_categories": ["File Structure", "Metadata", "Stream Control"]
+    },
+    {
+      "verifier_id": 7,
+      "agent_files": [
+        "agent_20_attributes_fill_merge.py",
+        "agent_21_transparency_optimization.py",
+        "agent_34_coordinate_transforms.py",
+        "agent_35_line_patterns.py",
+        "agent_36_color_extensions.py",
+        "agent_37_rendering_attributes.py"
+      ],
+      "opcode_count": "~24 opcodes",
+      "focus_categories": ["Fill Patterns", "Transparency", "Coordinate Systems"]
+    },
+    {
+      "verifier_id": 8,
+      "agent_files": [
+        "agent_25_images_urls.py",
+        "agent_28_binary_images_1.py",
+        "agent_29_binary_images_2.py",
+        "agent_40_clipping_masking.py"
+      ],
+      "opcode_count": "~21 opcodes",
+      "focus_categories": ["Images", "URLs", "Clipping", "Masking"]
+    },
+    {
+      "verifier_id": 9,
+      "agent_files": [
+        "agent_26_structure_guid.py",
+        "agent_27_security.py",
+        "agent_30_binary_color_compression.py",
+        "agent_31_binary_structure_1.py",
+        "agent_32_binary_structure_2.py",
+        "agent_33_binary_advanced.py",
+        "agent_44_extended_binary_final.py"
+      ],
+      "opcode_count": "~27 opcodes",
+      "focus_categories": ["Structure Blocks", "Security", "Compression", "Extended Binary"]
+    }
+  ],
+  "total_agents": 43,
+  "total_verifiers": 9,
+  "avg_opcodes_per_verifier": 22.8,
+  "verification_requirements": {
+    "per_verifier": {
+      "core_claims": 2,
+      "meta_claims": 1,
+      "total_claims_target": 3
+    },
+    "claim_types": ["FUNCTIONAL", "STRUCTURAL", "BEHAVIORAL", "DEPENDENCY"],
+    "max_attempts_per_claim": 5,
+    "termination_criteria": "All 9 verifiers contribute 3 accepted claims OR stable state reached"
+  }
+}

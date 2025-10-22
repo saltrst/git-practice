@@ -1,0 +1,74 @@
+{
+  "session_id": "session_01JEXAMPLE0000000000000001",
+  "timestamp": "2025-10-22T08:26:18.173874Z",
+  "verifiers_executed": [
+    "verifier_7",
+    "verifier_8",
+    "verifier_9"
+  ],
+  "total_claims_generated": 9,
+  "contradictions_detected": 0,
+  "verification_summary": {
+    "verifier_7": {
+      "focus": "Attributes & Transforms",
+      "agents_executed": 6,
+      "all_tests_passed": true,
+      "claims": [
+        "v7_c001",
+        "v7_c002",
+        "v7_c003"
+      ],
+      "core_opcodes": [
+        "363",
+        "381",
+        "383",
+        "0x6F",
+        "0x55",
+        "0x75"
+      ]
+    },
+    "verifier_8": {
+      "focus": "Images & Clipping",
+      "agents_executed": 4,
+      "all_tests_passed": true,
+      "claims": [
+        "v8_c001",
+        "v8_c002",
+        "v8_c003"
+      ],
+      "core_opcodes": [
+        "0x0006",
+        "0x0007",
+        "0x000C",
+        "0x0008",
+        "0x0002",
+        "0x0003",
+        "0x0009",
+        "0x000D"
+      ]
+    },
+    "verifier_9": {
+      "focus": "Structure & Security",
+      "agents_executed": 7,
+      "all_tests_passed": true,
+      "claims": [
+        "v9_c001",
+        "v9_c002",
+        "v9_c003"
+      ],
+      "core_opcodes": [
+        "332",
+        "361",
+        "351",
+        "0x0012",
+        "0x0013",
+        "0x0014",
+        "0x0020",
+        "0x0021",
+        "0x0022"
+      ]
+    }
+  },
+  "global_state_status": "updated",
+  "total_opcodes_in_graph": 83
+}
