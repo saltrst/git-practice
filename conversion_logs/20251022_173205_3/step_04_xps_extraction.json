@@ -1,0 +1,14 @@
+{
+  "step": "xps_extraction",
+  "timestamp": "2025-10-22T17:32:05.407055",
+  "data": {
+    "working_file": "conversion_logs/20251022_173205_3/step_03_preprocessing/preprocessed.dwfx",
+    "extract_directory": "conversion_logs/20251022_173205_3/step_04_xps_files",
+    "total_files_extracted": 50,
+    "fpage_files_found": [
+      "Documents/1/Pages/1.fpage"
+    ],
+    "fpage_count": 1,
+    "first_fpage_sample": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FixedPage xmlns=\"http://schemas.microsoft.com/xps/2005/06\" Width=\"612\" Height=\"792\">\n  <!-- W2D Version: 06.00 -->\n  <!-- Simplified converter - full W2D binary parsing in progress -->\n\n  <!-- Placeholder: Draw a simple test rectangle -->\n  <Path Data=\"M 50 50 L 550 50 L 550 750 L 50 750 Z\" \n        Stroke=\"#000000\" StrokeThickness=\"1\" Fill=\"none\" />\n\n  <!-- Placeholder: Add text indicating this is a simplified conversion -->\n  <Glyphs OriginX=\"100\" OriginY=\"100\" \n         UnicodeString=\"W2D Drawing (Simplified Conversion)\" \n         Fill=\"#FF0000\" FontRenderingEmSize=\"16\" />\n\n</FixedPage>"
+  }
+}

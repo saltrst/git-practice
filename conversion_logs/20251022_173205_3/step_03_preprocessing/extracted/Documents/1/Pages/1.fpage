@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FixedPage xmlns="http://schemas.microsoft.com/xps/2005/06" Width="612" Height="792">
+  <!-- W2D Version: 06.00 -->
+  <!-- Simplified converter - full W2D binary parsing in progress -->
+
+  <!-- Placeholder: Draw a simple test rectangle -->
+  <Path Data="M 50 50 L 550 50 L 550 750 L 50 750 Z" 
+        Stroke="#000000" StrokeThickness="1" Fill="none" />
+
+  <!-- Placeholder: Add text indicating this is a simplified conversion -->
+  <Glyphs OriginX="100" OriginY="100" 
+         UnicodeString="W2D Drawing (Simplified Conversion)" 
+         Fill="#FF0000" FontRenderingEmSize="16" />
+
+</FixedPage>

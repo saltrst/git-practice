@@ -1,0 +1,17 @@
+{
+  "step": "routing_claim",
+  "timestamp": "2025-10-22T17:24:50.254008",
+  "data": {
+    "format_detected": "DWF (W2D binary)",
+    "needs_preprocessing": true,
+    "planned_pipeline": [
+      "Extract W2D binary files",
+      "Parse W2D opcodes",
+      "Generate XPS XML pages",
+      "Create DWFX archive",
+      "Extract XPS pages",
+      "Parse XPS XML",
+      "Generate PDF"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "step": "routing_claim",
+  "timestamp": "2025-10-22T17:34:42.791191",
+  "data": {
+    "format_detected": "DWFX (XPS XML)",
+    "needs_preprocessing": false,
+    "planned_pipeline": [
+      "Extract XPS pages directly",
+      "Parse XPS XML",
+      "Generate PDF"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "step": "xps_extraction",
+  "timestamp": "2025-10-22T17:34:42.913692",
+  "data": {
+    "working_file": "2.dwfx",
+    "extract_directory": "conversion_logs/20251022_173442_2/step_04_xps_files",
+    "total_files_extracted": 49,
+    "fpage_files_found": [
+      "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+      "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C88-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+      "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C87-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage",
+      "dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C86-16A1-475C-94F2-BDBF8C6AB495/FixedPage.fpage"
+    ],
+    "fpage_count": 4,
+    "first_fpage_sample": "<?xml version=\"1.0\" encoding=\"utf-8\" ?><FixedPage xmlns=\"http://schemas.microsoft.com/xps/2005/06\" Height=\"3396\" Width=\"2377.1998697916665\" xml:lang=\"und\"><Canvas Name=\"dwfresource_5\"><Path Data=\"M 0, 0 L 2377.1998697916665,0 L2377.1998697916665,3396 L 0,3396 z\" RenderTransform=\"1.0000000000000002,-0,-0,1.0000000000000002,0,-6.8212102632969618e-13\"><Path.Fill><ImageBrush ImageSource=\"/dwf/documents/BDD11C84-16A1-475C-94F2-BDBF8C6AB495/sections/com.autodesk.dwf.ePlot_BDD11C85-16A1-475C-94F2-BDBF8C6AB495/2D66089D-6C15-4E7D-B9D5-2EB9F18D92EE.tif\" Viewbox=\"0,0,2377.1998697916665,3396\" Viewport=\"0,0,2377.1998697916665,3396\" ViewboxUnits=\"Absolute\" ViewportUnits=\"Absolute\"/></Path.Fill></Path></Canvas></FixedPage>"
+  }
+}

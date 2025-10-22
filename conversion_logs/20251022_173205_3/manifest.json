@@ -1,0 +1,179 @@
+{
+  "timestamp": "20251022_173205",
+  "input_file": "3.dwf",
+  "output_file": "test_w2d_fix.pdf",
+  "steps": [
+    {
+      "step": "format_detection",
+      "timestamp": "2025-10-22T17:32:05.036673",
+      "data": {
+        "has_w2d": true,
+        "has_xps": false,
+        "format": "DWF (W2D binary)",
+        "needs_preprocessing": true,
+        "w2d_files": [
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DB9-193B-4D74-B098-1B1DA70AC763.w2d"
+        ],
+        "xps_files": [],
+        "all_files": [
+          "manifest.xml",
+          "com.autodesk.dwf.ePlotGlobal\\descriptor.xml",
+          "com.autodesk.dwf.ePlotGlobal\\72AC1DB8-193B-4D74-B098-1B1DA70AC763.dsd",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\descriptor.xml",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE6-193B-4D74-B098-1B1DA70AC763.png",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBB-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBC-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBD-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBE-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBF-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC0-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC1-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC2-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC3-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC4-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC5-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC6-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC7-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC8-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC9-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCA-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCB-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCC-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCD-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCE-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCF-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD0-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD1-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD2-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD3-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD4-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD5-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD6-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD7-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD8-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD9-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDA-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDB-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDC-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDD-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDE-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDF-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE0-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE1-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE2-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE3-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE4-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE5-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DB9-193B-4D74-B098-1B1DA70AC763.w2d",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBA-193B-4D74-B098-1B1DA70AC763.pia"
+        ]
+      }
+    },
+    {
+      "step": "routing_claim",
+      "timestamp": "2025-10-22T17:32:05.037070",
+      "data": {
+        "format_detected": "DWF (W2D binary)",
+        "needs_preprocessing": true,
+        "planned_pipeline": [
+          "Extract W2D binary files",
+          "Parse W2D opcodes",
+          "Generate XPS XML pages",
+          "Create DWFX archive",
+          "Extract XPS pages",
+          "Parse XPS XML",
+          "Generate PDF"
+        ]
+      }
+    },
+    {
+      "step": "preprocessing_applied",
+      "timestamp": "2025-10-22T17:32:05.381926",
+      "data": {
+        "success": true,
+        "input": "3.dwf",
+        "output": "conversion_logs/20251022_173205_3/step_03_preprocessing/preprocessed.dwfx",
+        "output_size": 2567913,
+        "extracted_files": [
+          "com.autodesk.dwf.ePlotGlobal\\descriptor.xml",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDF-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC5-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD3-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC1-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC7-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE4-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC6-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBC-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC3-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlotGlobal\\72AC1DB8-193B-4D74-B098-1B1DA70AC763.dsd",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD7-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCE-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC8-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE5-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBA-193B-4D74-B098-1B1DA70AC763.pia",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD2-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD4-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD8-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC2-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC0-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD6-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE6-193B-4D74-B098-1B1DA70AC763.png",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDA-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD9-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD1-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDB-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBD-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC9-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD5-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDD-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DD0-193B-4D74-B098-1B1DA70AC763.ef_",
+          "manifest.xml",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DC4-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCF-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE2-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCC-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBE-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDE-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCB-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\descriptor.xml",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DDC-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCA-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBB-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE3-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DCD-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DBF-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE0-193B-4D74-B098-1B1DA70AC763.ef_",
+          "com.autodesk.dwf.ePlot_72AC1DB7-193B-4D74-B098-1B1DA70AC763\\72AC1DE1-193B-4D74-B098-1B1DA70AC763.ef_",
+          "Documents/1/Pages/1.fpage"
+        ]
+      }
+    },
+    {
+      "step": "xps_extraction",
+      "timestamp": "2025-10-22T17:32:05.407055",
+      "data": {
+        "working_file": "conversion_logs/20251022_173205_3/step_03_preprocessing/preprocessed.dwfx",
+        "extract_directory": "conversion_logs/20251022_173205_3/step_04_xps_files",
+        "total_files_extracted": 50,
+        "fpage_files_found": [
+          "Documents/1/Pages/1.fpage"
+        ],
+        "fpage_count": 1,
+        "first_fpage_sample": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FixedPage xmlns=\"http://schemas.microsoft.com/xps/2005/06\" Width=\"612\" Height=\"792\">\n  <!-- W2D Version: 06.00 -->\n  <!-- Simplified converter - full W2D binary parsing in progress -->\n\n  <!-- Placeholder: Draw a simple test rectangle -->\n  <Path Data=\"M 50 50 L 550 50 L 550 750 L 50 750 Z\" \n        Stroke=\"#000000\" StrokeThickness=\"1\" Fill=\"none\" />\n\n  <!-- Placeholder: Add text indicating this is a simplified conversion -->\n  <Glyphs OriginX=\"100\" OriginY=\"100\" \n         UnicodeString=\"W2D Drawing (Simplified Conversion)\" \n         Fill=\"#FF0000\" FontRenderingEmSize=\"16\" />\n\n</FixedPage>"
+      }
+    },
+    {
+      "step": "pdf_generation",
+      "timestamp": "2025-10-22T17:32:05.443555",
+      "data": {
+        "success": true,
+        "temp_pdf": "conversion_logs/20251022_173205_3/step_05_temp_output.pdf",
+        "temp_pdf_size": 739,
+        "final_pdf": "test_w2d_fix.pdf"
+      }
+    }
+  ],
+  "errors": [],
+  "log_directory": "conversion_logs/20251022_173205_3",
+  "success": true
+}
