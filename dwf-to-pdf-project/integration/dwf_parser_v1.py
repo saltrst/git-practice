@@ -28,8 +28,9 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 import struct
+import zipfile
 from io import BytesIO
-from typing import Dict, List, Any, BinaryIO, Optional
+from typing import Dict, List, Any, BinaryIO, Optional, Tuple
 
 # Import all 44 agent modules
 # Agent 1-3: Basic geometry opcodes
@@ -364,32 +365,154 @@ EXTENDED_BINARY_HANDLERS = {
 # MAIN PARSER FUNCTIONS
 # =============================================================================
 
-def parse_dwf_file(file_path: str) -> List[Dict[str, Any]]:
+def open_dwf_or_dwfx(file_path: str) -> Tuple[List[BinaryIO], str]:
     """
-    Parse a DWF file and return a list of parsed opcodes.
+    Opens DWF or DWFX file and returns W2D streams if available.
 
-    This function reads a DWF file byte by byte, detects opcode types,
-    and dispatches each opcode to the appropriate handler function.
+    This preprocessing layer handles three file format variants:
+    1. Classic DWF (pre-6.0): Direct W2D opcode stream
+    2. DWF 6.0+ / DWFX with W2D: ZIP container with W2D binary streams
+    3. DWFX with XPS: ZIP container with XML FixedPage graphics (not supported)
 
     Args:
-        file_path: Path to the DWF file to parse
+        file_path: Path to DWF or DWFX file
 
     Returns:
-        List of dictionaries containing parsed opcode data
+        Tuple of (list of W2D binary streams, format_type)
+
+        format_type values:
+        - "classic_dwf": Pre-6.0 DWF with direct opcode stream
+        - "dwf_w2d": DWF 6.0+ ZIP container with W2D streams
+        - "dwfx_w2d": DWFX ZIP container with W2D streams
+        - "dwfx_xps": DWFX with XPS FixedPage graphics (no W2D)
+
+    Raises:
+        ValueError: If file format is invalid or unrecognized
+
+    Example:
+        >>> streams, fmt = open_dwf_or_dwfx("drawing.dwf")
+        >>> fmt
+        'classic_dwf'
+        >>> streams, fmt = open_dwf_or_dwfx("drawing.dwfx")
+        >>> fmt
+        'dwfx_w2d'
+    """
+    try:
+        # Try to open as ZIP container (DWF 6.0+ or DWFX)
+        with zipfile.ZipFile(file_path, 'r') as zf:
+            filelist = zf.namelist()
+
+            # Look for W2D streams (typically in sections/ directory)
+            w2d_files = [f for f in filelist if f.endswith('.w2d')]
+
+            if w2d_files:
+                # Success: Found W2D streams in ZIP container
+                w2d_streams = []
+                for w2d_file in w2d_files:
+                    w2d_streams.append(BytesIO(zf.read(w2d_file)))
+
+                # Determine if DWF 6.0+ or DWFX based on manifest structure
+                # DWFX contains XPS FixedPage files even when W2D is present
+                if any('FixedPage' in f for f in filelist):
+                    return w2d_streams, "dwfx_w2d"
+                else:
+                    return w2d_streams, "dwf_w2d"
+
+            # No W2D files found - check if XPS-based DWFX
+            elif any('FixedPage' in f for f in filelist):
+                # XPS-based DWFX (no W2D streams available)
+                return [], "dwfx_xps"
+
+            else:
+                # ZIP container but no recognizable DWF/DWFX content
+                raise ValueError(
+                    f"ZIP container found but no recognizable DWF/DWFX content. "
+                    f"Expected .w2d files or FixedPage files."
+                )
+
+    except zipfile.BadZipFile:
+        # Not a ZIP file - try classic DWF format (pre-6.0)
+        with open(file_path, 'rb') as f:
+            content = f.read()
+
+            # Verify DWF header: "(DWF V"
+            if content.startswith(b'(DWF V'):
+                return [BytesIO(content)], "classic_dwf"
+            else:
+                raise ValueError(
+                    f"Not a valid DWF file. Expected '(DWF V' header at start of file, "
+                    f"but found: {content[:12]!r}"
+                )
+
+
+def parse_dwf_file(file_path: str) -> List[Dict[str, Any]]:
+    """
+    Parse a DWF or DWFX file and return a list of parsed opcodes.
+
+    This function automatically detects and handles multiple DWF format variants:
+    - Classic DWF (pre-6.0): Direct W2D opcode stream
+    - DWF 6.0+: ZIP container with W2D streams
+    - DWFX with W2D: ZIP container with W2D streams + XPS manifest
+
+    For each W2D stream found, the parser reads byte by byte, detects opcode types,
+    and dispatches each opcode to the appropriate handler function from the 44 agents.
+
+    Args:
+        file_path: Path to the DWF or DWFX file to parse
+
+    Returns:
+        List of dictionaries containing parsed opcode data from all W2D streams
 
     Raises:
         FileNotFoundError: If the file doesn't exist
         ValueError: If the file format is invalid
+        NotImplementedError: If file is XPS-based DWFX without W2D streams
+
+    Supported Formats:
+        ✓ Classic DWF (.dwf) - Pre-6.0 format with direct opcode stream
+        ✓ DWF 6.0+ (.dwf) - ZIP container with W2D binary streams
+        ✓ DWFX (.dwfx) - With W2D streams (hybrid W2D + XPS format)
+        ✗ DWFX (.dwfx) - XPS-only format without W2D (raises NotImplementedError)
 
     Example:
-        >>> opcodes = parse_dwf_file("/path/to/file.dwf")
+        >>> opcodes = parse_dwf_file("drawing.dwf")
         >>> len(opcodes)
-        150
+        983
         >>> opcodes[0]['type']
-        'line'
+        'polytriangle_16r'
+
+        >>> opcodes = parse_dwf_file("drawing.dwfx")  # With W2D streams
+        >>> len(opcodes)
+        1523
+
+        >>> opcodes = parse_dwf_file("xps_only.dwfx")  # XPS-only
+        NotImplementedError: File uses XPS FixedPage format...
     """
-    with open(file_path, 'rb') as f:
-        return parse_dwf_stream(f)
+    # Use preprocessing layer to detect format and extract W2D streams
+    streams, format_type = open_dwf_or_dwfx(file_path)
+
+    # Handle XPS-only DWFX files (no W2D streams available)
+    if format_type == "dwfx_xps":
+        raise NotImplementedError(
+            f"\nFile '{file_path}' is XPS-based DWFX format without W2D streams.\n\n"
+            f"This format uses XML FixedPage graphics instead of binary W2D opcodes.\n"
+            f"Current parser only supports W2D-based formats:\n"
+            f"  ✓ Classic DWF (pre-6.0)\n"
+            f"  ✓ DWF 6.0+ (ZIP with W2D)\n"
+            f"  ✓ DWFX with W2D streams (hybrid format)\n\n"
+            f"Options to convert this file:\n"
+            f"  1. Use Autodesk DWG TrueView to convert DWFX → DWF\n"
+            f"  2. Export from source application as W2D-based DWFX or DWF\n"
+            f"  3. Extract raster images from FixedPage XML (lossy conversion)\n"
+        )
+
+    # Parse all W2D streams using existing parser (works for all W2D-based formats)
+    all_opcodes = []
+    for stream in streams:
+        opcodes = parse_dwf_stream(stream)
+        all_opcodes.extend(opcodes)
+
+    return all_opcodes
 
 
 def parse_dwf_stream(stream: BinaryIO) -> List[Dict[str, Any]]:
