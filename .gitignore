@@ -50,3 +50,5 @@ _temp_*
 test_pdf_gen.py
 test_xps_approach.py
 xps_to_pdf_fixed.py
+test_preprocessed*.dwfx
+test_preprocessed_inspect/
