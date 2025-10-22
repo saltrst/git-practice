@@ -1,0 +1,10 @@
+{
+  "step": "pdf_generation",
+  "timestamp": "2025-10-22T17:23:55.293909",
+  "data": {
+    "success": true,
+    "temp_pdf": "conversion_logs/20251022_172354_1/step_05_temp_output.pdf",
+    "temp_pdf_size": 400619,
+    "final_pdf": "test_logged_1.pdf"
+  }
+}

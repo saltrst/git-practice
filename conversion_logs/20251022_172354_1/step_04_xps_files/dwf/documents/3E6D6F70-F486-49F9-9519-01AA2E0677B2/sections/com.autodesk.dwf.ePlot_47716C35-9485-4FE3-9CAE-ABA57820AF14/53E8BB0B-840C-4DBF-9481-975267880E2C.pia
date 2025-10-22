@@ -1,0 +1,64 @@
+PIAFILEVERSION_3.0,json
+{
+ "data" : 
+ {
+  "viewport" : 
+  {
+   "Is2DHidden" : false,
+   "IsInvisible" : false,
+   "IsRendered" : false,
+   "VIEWTWIST" : 0.0,
+   "backz" : 0.0,
+   "frontz" : 0.0,
+   "handle" : 0,
+   "has_plotport" : true,
+   "lenslength" : 50.0,
+   "llx" : 1880.6757878571516,
+   "lly" : -3914.2916561095335,
+   "nvmaplen" : 0,
+   "osctrx" : 8335.0320451682092,
+   "osctry" : -603.48977599780847,
+   "osdsize" : 6710.0756018954889,
+   "regentyp" : 1,
+   "shadePlot" : 0,
+   "target" : 
+   {
+    "0" : 
+    {
+     "value" : 0.0
+    },
+    "1" : 
+    {
+     "value" : 0.0
+    },
+    "2" : 
+    {
+     "value" : 0.0
+    }
+   },
+   "urx" : 14789.388302479267,
+   "ury" : 2707.3121041139166,
+   "viewmode" : 0,
+   "viewport_border_is_visible" : false,
+   "vwdir" : 
+   {
+    "0" : 
+    {
+     "value" : 0.0
+    },
+    "1" : 
+    {
+     "value" : 0.0
+    },
+    "2" : 
+    {
+     "value" : 1.0
+    }
+   },
+   "wdsar" : 1.9237804878048781,
+   "windnumber" : 2
+  }
+ },
+ "subver" : "json",
+ "version" : 0.01
+}
