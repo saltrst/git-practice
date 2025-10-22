@@ -1,0 +1,133 @@
+{
+  "batch_info": {
+    "batch_number": 2,
+    "total_opcodes": 33,
+    "agents": 11,
+    "opcodes_per_agent": 3,
+    "purpose": "Complete remaining single-byte and extended opcodes to reach ~200 total coverage",
+    "previous_coverage": {
+      "single_byte_opcodes": 47,
+      "extended_opcodes": 120,
+      "total_completed": 167
+    },
+    "target_coverage": 200
+  },
+  "agents": [
+    {
+      "agent_id": 34,
+      "category": "Single-Byte - Coordinate System & Transforms",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": "0x6F", "ascii": "o", "name": "SET_ORIGIN_16R", "desc": "Set coordinate origin (16-bit relative)"},
+        {"hex": "0x55", "ascii": "U", "name": "SET_UNITS", "desc": "Set drawing units (ASCII)"},
+        {"hex": "0x75", "ascii": "u", "name": "SET_UNITS_BINARY", "desc": "Set drawing units (binary)"}
+      ]
+    },
+    {
+      "agent_id": 35,
+      "category": "Single-Byte - Advanced Line Patterns",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x4C", "ascii": "L", "name": "SET_LINE_CAP", "desc": "Line cap style (butt, round, square)"},
+        {"hex": "0x6C", "ascii": "l", "name": "SET_LINE_JOIN", "desc": "Line join style (miter, round, bevel)"},
+        {"hex": "0x57", "ascii": "W", "name": "SET_PEN_WIDTH", "desc": "Pen width setting"}
+      ]
+    },
+    {
+      "agent_id": 36,
+      "category": "Single-Byte - Color Extensions",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x23", "name": "SET_COLOR_RGB_32", "desc": "RGB color with 32-bit values"},
+        {"hex": "0x83", "name": "SET_COLOR_MAP_INDEX", "desc": "Color map index reference"},
+        {"hex": "0xA3", "name": "SET_BACKGROUND_COLOR", "desc": "Background color setting"}
+      ]
+    },
+    {
+      "agent_id": 37,
+      "category": "Single-Byte - Rendering Attributes",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x48", "ascii": "H", "name": "SET_HALFTONE", "desc": "Halftone pattern"},
+        {"hex": "0x68", "ascii": "h", "name": "SET_HIGHLIGHT", "desc": "Highlighting mode"},
+        {"hex": "0x41", "ascii": "A", "name": "SET_ANTI_ALIAS", "desc": "Anti-aliasing setting"}
+      ]
+    },
+    {
+      "agent_id": 38,
+      "category": "Single-Byte - Drawing Primitives",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": "0x51", "ascii": "Q", "name": "DRAW_QUAD", "desc": "Quadrilateral drawing"},
+        {"hex": "0x71", "ascii": "q", "name": "DRAW_QUAD_32R", "desc": "32-bit quadrilateral"},
+        {"hex": "0x91", "name": "DRAW_WEDGE", "desc": "Wedge/pie slice drawing"}
+      ]
+    },
+    {
+      "agent_id": 39,
+      "category": "Single-Byte - Markers & Symbols",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x4B", "ascii": "K", "name": "SET_MARKER_SYMBOL", "desc": "Marker symbol definition"},
+        {"hex": "0x6B", "ascii": "k", "name": "SET_MARKER_SIZE", "desc": "Marker size"},
+        {"hex": "0x8B", "name": "DRAW_MARKER", "desc": "Draw marker at point"}
+      ]
+    },
+    {
+      "agent_id": 40,
+      "category": "Single-Byte - Clipping & Masking",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x44", "ascii": "D", "name": "SET_CLIP_REGION", "desc": "Define clipping region"},
+        {"hex": "0x64", "ascii": "d", "name": "CLEAR_CLIP_REGION", "desc": "Clear clipping region"},
+        {"hex": "0x84", "name": "SET_MASK", "desc": "Set drawing mask"}
+      ]
+    },
+    {
+      "agent_id": 41,
+      "category": "Single-Byte - Text Attributes",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x58", "ascii": "X", "name": "SET_TEXT_ROTATION", "desc": "Text rotation angle"},
+        {"hex": "0x78", "ascii": "x", "name": "SET_TEXT_SPACING", "desc": "Character spacing"},
+        {"hex": "0x98", "name": "SET_TEXT_SCALE", "desc": "Text scaling factor"}
+      ]
+    },
+    {
+      "agent_id": 42,
+      "category": "Single-Byte - State Management",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": "0x5A", "ascii": "Z", "name": "SAVE_STATE", "desc": "Save graphics state to stack"},
+        {"hex": "0x7A", "ascii": "z", "name": "RESTORE_STATE", "desc": "Restore graphics state from stack"},
+        {"hex": "0x9A", "name": "RESET_STATE", "desc": "Reset to default state"}
+      ]
+    },
+    {
+      "agent_id": 43,
+      "category": "Single-Byte - Stream Control",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x00", "name": "NOP", "desc": "No operation (padding)"},
+        {"hex": "0x01", "name": "STREAM_VERSION", "desc": "Stream version identifier"},
+        {"hex": "0xFF", "name": "END_OF_STREAM", "desc": "End of opcode stream marker"}
+      ]
+    },
+    {
+      "agent_id": 44,
+      "category": "Extended Binary - Remaining Opcodes",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": null, "id": 323, "name": "WD_EXBO_ENCRYPTION", "desc": "Binary encryption block"},
+        {"hex": null, "id": 331, "name": "WD_EXBO_PASSWORD", "desc": "Binary password block"},
+        {"hex": null, "id": 302, "name": "WD_EXBO_UNKNOWN", "desc": "Unknown binary opcode handler"}
+      ]
+    }
+  ],
+  "notes": [
+    "These opcodes are inferred from common CAD format patterns and gaps in hex coverage",
+    "Agent 44 handles the 3 remaining extended binary opcodes (2 from batch 1 + 1 fallback)",
+    "If DWF Toolkit source reveals different opcodes, agents can be re-tasked",
+    "Priority reflects critical path for PDF conversion functionality"
+  ]
+}
