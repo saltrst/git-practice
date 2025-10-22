@@ -1,0 +1,274 @@
+{
+  "batch_info": {
+    "total_opcodes": 120,
+    "agents": 20,
+    "opcodes_per_agent": 6,
+    "remaining_for_batch_2": 2,
+    "categories": {
+      "extended_ascii": 72,
+      "extended_binary": 50
+    }
+  },
+  "agents": [
+    {
+      "agent_id": 14,
+      "category": "Extended ASCII - File Structure",
+      "priority": "CRITICAL",
+      "opcodes": [
+        {"id": 268, "name": "WD_EXAO_DEFINE_DWF_HEADER", "token": "(DWF V", "desc": "DWF file header"},
+        {"id": 268, "name": "WD_EXAO_DEFINE_DWF_HEADER", "token": "(W2D V", "desc": "W2D file header"},
+        {"id": 272, "name": "WD_EXAO_DEFINE_END_OF_DWF", "token": "(EndOfDWF", "desc": "End of DWF marker"},
+        {"id": 290, "name": "WD_EXAO_SET_VIEWPORT", "token": "(Viewport", "desc": "Viewport definition"},
+        {"id": 291, "name": "WD_EXAO_SET_VIEW", "token": "(View", "desc": "View settings"},
+        {"id": 281, "name": "WD_EXAO_DEFINE_NAMED_VIEW", "token": "(NamedView", "desc": "Named view"}
+      ]
+    },
+    {
+      "agent_id": 15,
+      "category": "Extended ASCII - Metadata (1/3)",
+      "priority": "HIGH",
+      "opcodes": [
+        {"id": 256, "name": "WD_EXAO_DEFINE_AUTHOR", "token": "(Author", "desc": "Document author"},
+        {"id": 303, "name": "WD_EXAO_DEFINE_TITLE", "token": "(Title", "desc": "Document title"},
+        {"id": 304, "name": "WD_EXAO_DEFINE_SUBJECT", "token": "(Subject", "desc": "Document subject"},
+        {"id": 269, "name": "WD_EXAO_DEFINE_DESCRIPTION", "token": "(Description", "desc": "Document description"},
+        {"id": 262, "name": "WD_EXAO_DEFINE_COMMENTS", "token": "(Comment", "desc": "Comments (prefix match)"},
+        {"id": 275, "name": "WD_EXAO_DEFINE_KEYWORDS", "token": "(Keywords", "desc": "Search keywords"}
+      ]
+    },
+    {
+      "agent_id": 16,
+      "category": "Extended ASCII - Metadata (2/3)",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"id": 263, "name": "WD_EXAO_DEFINE_COPYRIGHT", "token": "(Copyright", "desc": "Copyright info"},
+        {"id": 264, "name": "WD_EXAO_DEFINE_CREATOR", "token": "(Creator", "desc": "Creator application"},
+        {"id": 265, "name": "WD_EXAO_DEFINE_CREATION_TIME", "token": "(Created", "desc": "Creation timestamp"},
+        {"id": 280, "name": "WD_EXAO_DEFINE_MODIFICATION_TIME", "token": "(Modified", "desc": "Modification timestamp"},
+        {"id": 284, "name": "WD_EXAO_DEFINE_SOURCE_CREATION_TIME", "token": "(SourceCreated", "desc": "Source creation time"},
+        {"id": 285, "name": "WD_EXAO_DEFINE_SOURCE_MODIFICATION_TIME", "token": "(SourceModified", "desc": "Source modified time"}
+      ]
+    },
+    {
+      "agent_id": 17,
+      "category": "Extended ASCII - Metadata (3/3)",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"id": 286, "name": "WD_EXAO_SOURCE_FILENAME", "token": "(SourceFilename", "desc": "Original filename"},
+        {"id": 282, "name": "WD_EXAO_DEFINE_PLOT_INFO", "token": "(PlotInfo", "desc": "Plot configuration"},
+        {"id": 289, "name": "WD_EXAO_DEFINE_UNITS", "token": "(Units", "desc": "Units of measurement"},
+        {"id": 316, "name": "WD_EXAO_SET_INKED_AREA", "token": "(InkedArea", "desc": "Inked area bounds"},
+        {"id": 334, "name": "WD_EXAO_FILETIME", "token": "(Time", "desc": "File timestamp"},
+        {"id": 365, "name": "WD_EXAO_DRAWING_INFO", "token": "(DrawingInfo", "desc": "Drawing information"}
+      ]
+    },
+    {
+      "agent_id": 18,
+      "category": "Extended ASCII - Attributes (1/3)",
+      "priority": "HIGH",
+      "opcodes": [
+        {"id": 260, "name": "WD_EXAO_SET_COLOR", "token": "(Color", "desc": "Color setting"},
+        {"id": 261, "name": "WD_EXAO_SET_COLOR_MAP", "token": "(ColorMap", "desc": "Color palette"},
+        {"id": 385, "name": "WD_EXAO_SET_CONTRAST_COLOR", "token": "(ContrastColor", "desc": "Contrast color"},
+        {"id": 276, "name": "WD_EXAO_SET_LAYER", "token": "(Layer", "desc": "Layer assignment"},
+        {"id": 257, "name": "WD_EXAO_SET_BACKGROUND", "token": "(Background", "desc": "Background color/pattern"},
+        {"id": 266, "name": "WD_EXAO_SET_CODE_PAGE", "token": "(CodePage", "desc": "Character encoding"}
+      ]
+    },
+    {
+      "agent_id": 19,
+      "category": "Extended ASCII - Attributes (2/3)",
+      "priority": "HIGH",
+      "opcodes": [
+        {"id": 277, "name": "WD_EXAO_SET_LINE_PATTERN", "token": "(LinePattern", "desc": "Line pattern"},
+        {"id": 278, "name": "WD_EXAO_SET_LINE_WEIGHT", "token": "(LineWeight", "desc": "Line thickness"},
+        {"id": 279, "name": "WD_EXAO_SET_LINE_STYLE", "token": "(LineStyle", "desc": "Line style"},
+        {"id": 267, "name": "WD_EXAO_SET_DASH_PATTERN", "token": "(DashPattern", "desc": "Line dash pattern"},
+        {"id": 315, "name": "WD_EXAO_SET_FILL_PATTERN", "token": "(FillPattern", "desc": "Fill pattern"},
+        {"id": 357, "name": "WD_EXAO_PEN_PATTERN", "token": "(PenPattern", "desc": "Pen pattern"}
+      ]
+    },
+    {
+      "agent_id": 20,
+      "category": "Extended ASCII - Attributes (3/3)",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"id": 363, "name": "WD_EXAO_PENPAT_OPTIONS", "token": "(PenPat_Options", "desc": "Pen pattern options"},
+        {"id": 381, "name": "WD_EXAO_SET_USER_FILL_PATTERN", "token": "(UserFillPattern", "desc": "User fill pattern"},
+        {"id": 383, "name": "WD_EXAO_SET_USER_HATCH_PATTERN", "token": "(UserHatchPattern", "desc": "User hatch pattern"},
+        {"id": 308, "name": "WD_EXAO_SET_MERGE_CONTROL", "token": "(LinesOverwrite", "desc": "Merge control"},
+        {"id": 309, "name": "WD_EXAO_SET_OPAQUE", "token": "(Opaque", "desc": "Opacity setting"},
+        {"id": 310, "name": "WD_EXAO_SET_MERGE", "token": "(Merge", "desc": "Merge mode"}
+      ]
+    },
+    {
+      "agent_id": 21,
+      "category": "Extended ASCII - Transparency & Optimization",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"id": 311, "name": "WD_EXAO_SET_TRANSPARENT", "token": "(Transparent", "desc": "Transparency"},
+        {"id": 312, "name": "WD_EXAO_SET_OPTIMIZED_FOR_PLOTTING", "token": "(PlotOptimized", "desc": "Plot optimization"},
+        {"id": 283, "name": "WD_EXAO_SET_PROJECTION", "token": "(Projection", "desc": "Projection settings"},
+        {"id": 326, "name": "WD_EXAO_ORIENTATION", "token": "(Orientation", "desc": "Orientation"},
+        {"id": 328, "name": "WD_EXAO_ALIGNMENT", "token": "(Alignment", "desc": "Alignment"},
+        {"id": 379, "name": "WD_EXAO_DELINEATE", "token": "(Delineate", "desc": "Delineation"}
+      ]
+    },
+    {
+      "agent_id": 22,
+      "category": "Extended ASCII - Text & Font",
+      "priority": "HIGH",
+      "opcodes": [
+        {"id": 273, "name": "WD_EXAO_SET_FONT", "token": "(Font", "desc": "Font definition"},
+        {"id": 287, "name": "WD_EXAO_DRAW_TEXT", "token": "(Text", "desc": "Text drawing"},
+        {"id": 319, "name": "WD_EXAO_EMBEDDED_FONT", "token": "(Embedded_Font", "desc": "Embedded font data"},
+        {"id": 320, "name": "WD_EXAO_TRUSTED_FONT_LIST", "token": "(TrustedFontList", "desc": "Trusted fonts"},
+        {"id": 362, "name": "WD_EXAO_SET_FONT_EXTENSION", "token": "(FontExtension", "desc": "Font extensions"},
+        {"id": 372, "name": "WD_EXAO_TEXT_HALIGN", "token": "(TextHAlign", "desc": "Horizontal alignment"}
+      ]
+    },
+    {
+      "agent_id": 23,
+      "category": "Extended ASCII - Text Formatting",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"id": 374, "name": "WD_EXAO_TEXT_VALIGN", "token": "(TextVAlign", "desc": "Vertical alignment"},
+        {"id": 376, "name": "WD_EXAO_TEXT_BACKGROUND", "token": "(TextBackground", "desc": "Text background"},
+        {"id": 378, "name": "WD_EXAO_OVERPOST", "token": "(Overpost", "desc": "Overposting control"},
+        {"id": 313, "name": "WD_EXAO_SET_GROUP_BEGIN", "token": "(GroupBegin", "desc": "Begin group"},
+        {"id": 314, "name": "WD_EXAO_SET_GROUP_END", "token": "(GroupEnd", "desc": "End group"},
+        {"id": 321, "name": "WD_EXAO_BLOCK_MEANING", "token": "(BlockMeaning", "desc": "Block semantics"}
+      ]
+    },
+    {
+      "agent_id": 24,
+      "category": "Extended ASCII - Geometry",
+      "priority": "HIGH",
+      "opcodes": [
+        {"id": 258, "name": "WD_EXAO_DRAW_CIRCLE", "token": "(Circle", "desc": "Circle drawing"},
+        {"id": 270, "name": "WD_EXAO_DRAW_ELLIPSE", "token": "(Ellipse", "desc": "Ellipse drawing"},
+        {"id": 259, "name": "WD_EXAO_DRAW_CONTOUR", "token": "(Contour", "desc": "Contour/polygon"},
+        {"id": 364, "name": "WD_EXAO_GOURAUD_POLYTRIANGLE", "token": "(Gouraud", "desc": "Gouraud shaded triangle"},
+        {"id": 367, "name": "WD_EXAO_GOURAUD_POLYLINE", "token": "(GourLine", "desc": "Gouraud shaded line"},
+        {"id": 368, "name": "WD_EXAO_BEZIER", "token": "(Bezier", "desc": "Bezier curve"}
+      ]
+    },
+    {
+      "agent_id": 25,
+      "category": "Extended ASCII - Images",
+      "priority": "HIGH",
+      "opcodes": [
+        {"id": 274, "name": "WD_EXAO_DRAW_IMAGE", "token": "(Image", "desc": "Image embedding"},
+        {"id": 307, "name": "WD_EXAO_DRAW_PNG_GROUP4_IMAGE", "token": "(Group4PNGImage", "desc": "PNG/Group4 image"},
+        {"id": 271, "name": "WD_EXAO_DEFINE_EMBED", "token": "(Embed", "desc": "Embedded content"},
+        {"id": 288, "name": "WD_EXAO_SET_URL", "token": "(URL", "desc": "Hyperlink/URL"},
+        {"id": 387, "name": "WD_EXAO_ATTRIBUTE_URL", "token": "(AttributeURL", "desc": "Attribute URL"},
+        {"id": 370, "name": "WD_EXAO_MACRO_DEFINITION", "token": "(Macro", "desc": "Macro definition"}
+      ]
+    },
+    {
+      "agent_id": 26,
+      "category": "Extended ASCII - Structure & Security",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"id": 332, "name": "WD_EXAO_GUID", "token": "(Guid", "desc": "GUID identifier"},
+        {"id": 361, "name": "WD_EXAO_GUID_LIST", "token": "(GuidList", "desc": "GUID list"},
+        {"id": 351, "name": "WD_EXAO_BLOCKREF", "token": "(BlockRef", "desc": "Block reference"},
+        {"id": 353, "name": "WD_EXAO_DIRECTORY", "token": "(Directory", "desc": "Directory"},
+        {"id": 355, "name": "WD_EXAO_USERDATA", "token": "(UserData", "desc": "User-defined data"},
+        {"id": 366, "name": "WD_EXAO_OBJECT_NODE", "token": "(Node", "desc": "Object node"}
+      ]
+    },
+    {
+      "agent_id": 27,
+      "category": "Extended ASCII - Security",
+      "priority": "LOW",
+      "opcodes": [
+        {"id": 324, "name": "WD_EXAO_ENCRYPTION", "token": "(Encryption", "desc": "Encryption info"},
+        {"id": 329, "name": "WD_EXAO_PASSWORD", "token": "(Psswd", "desc": "Password"},
+        {"id": 359, "name": "WD_EXAO_SIGNDATA", "token": "(SignData", "desc": "Signature data"},
+        {"id": 292, "name": "WD_EXAO_UNKNOWN", "token": "(Unknown", "desc": "Unrecognized opcode (catchall)"},
+        {"id": 292, "name": "WD_EXAO_UNKNOWN", "token": "(Unknown", "desc": "Unknown placeholder 1"},
+        {"id": 292, "name": "WD_EXAO_UNKNOWN", "token": "(Unknown", "desc": "Unknown placeholder 2"}
+      ]
+    },
+    {
+      "agent_id": 28,
+      "category": "Extended Binary - Images (1/2)",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": "0x0006", "id": 298, "name": "WD_EXBO_DRAW_IMAGE_RGB", "desc": "RGB image"},
+        {"hex": "0x0007", "id": 299, "name": "WD_EXBO_DRAW_IMAGE_RGBA", "desc": "RGBA image"},
+        {"hex": "0x000C", "id": 305, "name": "WD_EXBO_DRAW_IMAGE_PNG", "desc": "PNG image"},
+        {"hex": "0x0008", "id": 300, "name": "WD_EXBO_DRAW_IMAGE_JPEG", "desc": "JPEG image"},
+        {"hex": "0x0004", "id": 296, "name": "WD_EXBO_DRAW_IMAGE_INDEXED", "desc": "Indexed color image"},
+        {"hex": "0x0005", "id": 297, "name": "WD_EXBO_DRAW_IMAGE_MAPPED", "desc": "Mapped image"}
+      ]
+    },
+    {
+      "agent_id": 29,
+      "category": "Extended Binary - Images (2/2)",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": "0x0002", "id": 294, "name": "WD_EXBO_DRAW_IMAGE_BITONAL_MAPPED", "desc": "Bitonal mapped image"},
+        {"hex": "0x0003", "id": 295, "name": "WD_EXBO_DRAW_IMAGE_GROUP3X_MAPPED", "desc": "Group3X mapped image"},
+        {"hex": "0x0009", "id": 306, "name": "WD_EXBO_DRAW_IMAGE_GROUP4", "desc": "Group4 bitonal image"},
+        {"hex": "0x000D", "id": 317, "name": "WD_EXBO_DRAW_IMAGE_GROUP4X_MAPPED", "desc": "Group4X mapped image"},
+        {"hex": "0x0015", "id": 338, "name": "WD_EXBO_THUMBNAIL", "desc": "Thumbnail image"},
+        {"hex": "0x0016", "id": 339, "name": "WD_EXBO_PREVIEW", "desc": "Preview image"}
+      ]
+    },
+    {
+      "agent_id": 30,
+      "category": "Extended Binary - Color & Compression",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": "0x0001", "id": 293, "name": "WD_EXBO_SET_COLOR_MAP", "desc": "Color map definition"},
+        {"hex": "0x0010", "id": 301, "name": "WD_EXBO_ADSK_COMPRESSION", "desc": "LZ compression"},
+        {"hex": "0x0011", "id": null, "name": "WD_ZLIB_COMPRESSION_EXT_OPCODE", "desc": "ZLIB compression"},
+        {"hex": "0x0123", "id": null, "name": "WD_LZ_COMPRESSION_EXT_OPCODE_OBSOLETE", "desc": "Obsolete LZ compression"},
+        {"hex": "0x0017", "id": 340, "name": "WD_EXBO_OVERLAY_PREVIEW", "desc": "Overlay preview"},
+        {"hex": "0x0018", "id": 341, "name": "WD_EXBO_FONT", "desc": "Font block"}
+      ]
+    },
+    {
+      "agent_id": 31,
+      "category": "Extended Binary - Structure Blocks (1/2)",
+      "priority": "CRITICAL",
+      "opcodes": [
+        {"hex": "0x0012", "id": 335, "name": "WD_EXBO_GRAPHICS_HDR", "desc": "Graphics header block"},
+        {"hex": "0x0013", "id": 336, "name": "WD_EXBO_OVERLAY_HDR", "desc": "Overlay header block"},
+        {"hex": "0x0014", "id": 337, "name": "WD_EXBO_REDLINE_HDR", "desc": "Redline header block"},
+        {"hex": "0x0020", "id": 342, "name": "WD_EXBO_GRAPHICS", "desc": "Graphics block"},
+        {"hex": "0x0021", "id": 343, "name": "WD_EXBO_OVERLAY", "desc": "Overlay block"},
+        {"hex": "0x0022", "id": 344, "name": "WD_EXBO_REDLINE", "desc": "Redline block"}
+      ]
+    },
+    {
+      "agent_id": 32,
+      "category": "Extended Binary - Structure Blocks (2/2)",
+      "priority": "HIGH",
+      "opcodes": [
+        {"hex": "0x0023", "id": 345, "name": "WD_EXBO_USER", "desc": "User block"},
+        {"hex": "0x0024", "id": 346, "name": "WD_EXBO_NULL", "desc": "Null block"},
+        {"hex": "0x0025", "id": 347, "name": "WD_EXBO_GLOBAL_SHEET", "desc": "Global sheet block"},
+        {"hex": "0x0026", "id": 348, "name": "WD_EXBO_GLOBAL", "desc": "Global block"},
+        {"hex": "0x0027", "id": 349, "name": "WD_EXBO_SIGNATURE", "desc": "Signature block"},
+        {"hex": "0x0019", "id": null, "name": "WD_FONT_EXT_OPCODE", "desc": "Font extension"}
+      ]
+    },
+    {
+      "agent_id": 33,
+      "category": "Extended Binary - Advanced Features",
+      "priority": "MEDIUM",
+      "opcodes": [
+        {"hex": null, "id": 318, "name": "WD_EXBO_EMBEDDED_FONT", "desc": "Embedded font"},
+        {"hex": null, "id": 322, "name": "WD_EXBO_BLOCK_MEANING", "desc": "Block meaning"},
+        {"hex": null, "id": 350, "name": "WD_EXBO_BLOCKREF", "desc": "Block reference"},
+        {"hex": null, "id": 352, "name": "WD_EXBO_DIRECTORY", "desc": "Directory"},
+        {"hex": null, "id": 354, "name": "WD_EXBO_USERDATA", "desc": "User data"},
+        {"hex": null, "id": 369, "name": "WD_EXBO_MACRO_DEFINITION", "desc": "Macro definition"}
+      ]
+    }
+  ]
+}
