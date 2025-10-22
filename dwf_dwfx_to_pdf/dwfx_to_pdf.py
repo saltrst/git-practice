@@ -404,7 +404,7 @@ def convert_dwfx_to_pdf(dwfx_path: str, pdf_path: str, verbose: bool = True) -> 
         # Find XPS pages
         if verbose:
             print("   📄 Parsing vector pages...")
-        page_files = list(Path(extract_dir).rglob("*Page*.fpage"))
+        page_files = list(Path(extract_dir).rglob("*.fpage"))
         
         if not page_files:
             print("   ❌ No pages found in DWFX file")
